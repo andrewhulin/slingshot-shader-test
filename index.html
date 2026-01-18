@@ -3,71 +3,156 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fragment Shader Editor</title>
+    <title>Shader Studio - No-Code Shader Creator</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/theme/monokai.min.css">
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>✨ Fragment Shader Editor</h1>
-            <div class="header-controls">
-                <button id="playBtn" class="btn btn-primary" title="Play/Pause animation">
-                    <span id="playIcon">⏸</span> Pause
-                </button>
-                <button id="resetBtn" class="btn" title="Reset time">🔄 Reset</button>
-                <button id="exportBtn" class="btn btn-success" title="Export shader as .frag file">💾 Export .frag</button>
-            </div>
-        </header>
+    <!-- Full-screen shader canvas as background -->
+    <canvas id="glCanvas"></canvas>
 
-        <div class="main-content">
-            <div class="editor-panel">
-                <div class="panel-header">
-                    <h2>Shader Code</h2>
-                    <div class="panel-controls">
-                        <label for="exampleSelect">Examples:</label>
-                        <select id="exampleSelect" class="select">
-                            <option value="">-- Select Example --</option>
-                            <option value="plasma">Plasma</option>
-                            <option value="rainbow">Rainbow Gradient</option>
-                            <option value="mandelbrot">Mandelbrot Set</option>
-                            <option value="tunnel">Tunnel Effect</option>
-                            <option value="wave">Wave Pattern</option>
-                            <option value="fire">Fire Effect</option>
-                        </select>
-                    </div>
-                </div>
-                <textarea id="shaderCode"></textarea>
-                <div class="error-message" id="errorMessage"></div>
-            </div>
-
-            <div class="preview-panel">
-                <div class="panel-header">
-                    <h2>Live Preview</h2>
-                    <div class="info">
-                        <span id="fpsCounter">FPS: 0</span>
-                        <span id="timeCounter">Time: 0.00s</span>
-                    </div>
-                </div>
-                <div class="canvas-container">
-                    <canvas id="glCanvas"></canvas>
-                </div>
-                <div class="controls">
-                    <label for="resolutionSlider">Resolution:</label>
-                    <input type="range" id="resolutionSlider" min="0.25" max="2" step="0.25" value="1">
-                    <span id="resolutionValue">1.0x</span>
-                </div>
-            </div>
+    <!-- Floating control panel -->
+    <div class="control-panel" id="controlPanel">
+        <div class="panel-header">
+            <h1>🎨 Shader Studio</h1>
+            <button id="togglePanel" class="btn-icon" title="Collapse panel">−</button>
         </div>
 
-        <footer>
-            <p>Tips: Use <code>uniform float iTime</code> for animation, <code>uniform vec2 iResolution</code> for canvas size, <code>uniform vec2 iMouse</code> for mouse position</p>
-        </footer>
+        <div class="panel-content" id="panelContent">
+            <!-- Effect Type Selection -->
+            <section class="control-section">
+                <h3>Effect Type</h3>
+                <select id="effectType" class="select-large">
+                    <option value="plasma">Plasma</option>
+                    <option value="waves">Waves</option>
+                    <option value="tunnel">Tunnel</option>
+                    <option value="spiral">Spiral</option>
+                    <option value="kaleidoscope">Kaleidoscope</option>
+                    <option value="fractal">Fractal</option>
+                    <option value="aurora">Aurora</option>
+                    <option value="nebula">Nebula</option>
+                </select>
+            </section>
+
+            <!-- Animation Controls -->
+            <section class="control-section">
+                <h3>Animation</h3>
+                <div class="control-group">
+                    <label>
+                        <span>Speed</span>
+                        <span class="value" id="speedValue">1.0</span>
+                    </label>
+                    <input type="range" id="speed" min="0" max="3" step="0.1" value="1">
+                </div>
+                <div class="control-group">
+                    <label>
+                        <span>Complexity</span>
+                        <span class="value" id="complexityValue">1.0</span>
+                    </label>
+                    <input type="range" id="complexity" min="0.1" max="3" step="0.1" value="1">
+                </div>
+                <div class="control-group">
+                    <label>
+                        <span>Scale</span>
+                        <span class="value" id="scaleValue">1.0</span>
+                    </label>
+                    <input type="range" id="scale" min="0.1" max="5" step="0.1" value="1">
+                </div>
+            </section>
+
+            <!-- Color Controls -->
+            <section class="control-section">
+                <h3>Colors</h3>
+                <div class="control-group">
+                    <label>
+                        <span>Color 1</span>
+                    </label>
+                    <input type="color" id="color1" value="#ff006e">
+                </div>
+                <div class="control-group">
+                    <label>
+                        <span>Color 2</span>
+                    </label>
+                    <input type="color" id="color2" value="#8338ec">
+                </div>
+                <div class="control-group">
+                    <label>
+                        <span>Color 3</span>
+                    </label>
+                    <input type="color" id="color3" value="#3a86ff">
+                </div>
+                <div class="control-group">
+                    <label>
+                        <span>Color Intensity</span>
+                        <span class="value" id="colorIntensityValue">1.0</span>
+                    </label>
+                    <input type="range" id="colorIntensity" min="0" max="2" step="0.1" value="1">
+                </div>
+                <div class="control-group">
+                    <label>
+                        <span>Color Shift</span>
+                        <span class="value" id="colorShiftValue">0.0</span>
+                    </label>
+                    <input type="range" id="colorShift" min="-3.14" max="3.14" step="0.1" value="0">
+                </div>
+            </section>
+
+            <!-- Pattern Controls -->
+            <section class="control-section">
+                <h3>Pattern</h3>
+                <div class="control-group">
+                    <label>
+                        <span>Distortion</span>
+                        <span class="value" id="distortionValue">0.5</span>
+                    </label>
+                    <input type="range" id="distortion" min="0" max="2" step="0.1" value="0.5">
+                </div>
+                <div class="control-group">
+                    <label>
+                        <span>Symmetry</span>
+                        <span class="value" id="symmetryValue">1</span>
+                    </label>
+                    <input type="range" id="symmetry" min="1" max="12" step="1" value="1">
+                </div>
+                <div class="control-group">
+                    <label>
+                        <span>Glow</span>
+                        <span class="value" id="glowValue">0.2</span>
+                    </label>
+                    <input type="range" id="glow" min="0" max="1" step="0.05" value="0.2">
+                </div>
+                <div class="control-group">
+                    <label>
+                        <span>Brightness</span>
+                        <span class="value" id="brightnessValue">1.0</span>
+                    </label>
+                    <input type="range" id="brightness" min="0" max="2" step="0.1" value="1">
+                </div>
+            </section>
+
+            <!-- Action Buttons -->
+            <section class="control-section">
+                <div class="button-group">
+                    <button id="randomizeBtn" class="btn btn-primary">🎲 Randomize</button>
+                    <button id="resetBtn" class="btn">🔄 Reset</button>
+                </div>
+                <div class="button-group">
+                    <button id="playBtn" class="btn btn-success">
+                        <span id="playIcon">⏸</span> <span id="playText">Pause</span>
+                    </button>
+                    <button id="exportBtn" class="btn btn-export">💾 Export .frag</button>
+                </div>
+            </section>
+
+            <!-- Info Display -->
+            <section class="control-section info-section">
+                <div class="info-grid">
+                    <span id="fpsCounter">FPS: 0</span>
+                    <span id="timeCounter">Time: 0.00s</span>
+                </div>
+            </section>
+        </div>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/clike/clike.min.js"></script>
     <script src="shader-editor.js"></script>
 </body>
 </html>

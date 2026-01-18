@@ -1,81 +1,114 @@
-# Fragment Shader Editor ✨
+# Shader Studio ✨
 
-A beautiful web-based fragment shader editor with real-time preview and export functionality. Create stunning visual effects using GLSL shaders directly in your browser!
+A beautiful **no-code** shader creator with real-time preview and export functionality. Create stunning visual effects with sliders and color pickers - no programming required!
 
-![Fragment Shader Editor](https://img.shields.io/badge/WebGL-Enabled-blue) ![No Build Required](https://img.shields.io/badge/No%20Build-Required-green)
+![No Code Required](https://img.shields.io/badge/No%20Code-Required-green) ![WebGL](https://img.shields.io/badge/WebGL-Enabled-blue) ![100% Visual](https://img.shields.io/badge/100%25-Visual-purple)
 
 ## Features
 
-- **Live Preview**: Real-time shader compilation and rendering using WebGL
-- **Code Editor**: Syntax-highlighted editor powered by CodeMirror with Monokai theme
-- **Example Shaders**: 6 beautiful pre-built shader examples to get you started
-- **Export**: Save your shaders as `.frag` files
-- **Animation Controls**: Play/Pause and Reset time controls
-- **Performance Monitoring**: Live FPS counter and time display
-- **Resolution Scaling**: Adjust preview quality from 0.25x to 2x
-- **Mouse Tracking**: Interactive shaders with mouse position support
-- **Responsive Design**: Works on desktop and tablet devices
+🎨 **100% No-Code** - Create beautiful shaders without writing a single line of code
+🌈 **8 Effect Types** - Plasma, Waves, Tunnel, Spiral, Kaleidoscope, Fractal, Aurora, Nebula
+🎚️ **Full Parameter Control** - Speed, Complexity, Scale, Distortion, Symmetry, Glow, Brightness
+🎨 **Color Customization** - Three color pickers with intensity and shift controls
+🎲 **Randomize** - Instantly generate random beautiful shaders
+💾 **Export** - Save generated shaders as `.frag` files
+📺 **Full-Screen Preview** - Immersive shader background with floating control panel
+⚡ **Real-Time** - See changes instantly as you adjust parameters
+📊 **Performance Monitor** - Live FPS counter
 
 ## Quick Start
 
-1. **Open the editor**: Simply open `index.html` in a modern web browser
-2. **Write or select a shader**: Use the built-in examples or write your own
-3. **Watch it render**: See your shader come to life in real-time
-4. **Export**: Save your creation as a `.frag` file
+1. **Open `index.html`** in any modern web browser
+2. **Choose an effect type** from the dropdown
+3. **Adjust sliders** to customize the effect
+4. **Pick colors** with the color pickers
+5. **Click Randomize** for instant inspiration
+6. **Export** to save your creation as a shader file
 
-No installation, no build process, no dependencies to install!
+**That's it! No installation, no setup, no coding required!**
 
-## Shader Uniforms
+## Effect Types
 
-Your fragment shaders have access to the following uniforms:
+### 🌀 Plasma
+Animated plasma effect with flowing colors and organic movement.
 
-```glsl
-uniform float iTime;        // Current time in seconds
-uniform vec2 iResolution;   // Canvas resolution in pixels
-uniform vec2 iMouse;        // Mouse position in pixels
-```
+### 🌊 Waves
+Radial wave patterns with exponential falloff creating ripple effects.
 
-## Example Shader
+### 🕳️ Tunnel
+Mesmerizing 3D tunnel illusion with spiral patterns.
 
-```glsl
-precision mediump float;
+### 🌀 Spiral
+Rotating spiral patterns with customizable symmetry.
 
-uniform float iTime;
-uniform vec2 iResolution;
+### 🔷 Kaleidoscope
+Symmetrical kaleidoscope patterns with mirror reflections.
 
-void main() {
-    // Normalize coordinates
-    vec2 uv = gl_FragCoord.xy / iResolution.xy;
+### 🔮 Fractal
+Fractal iteration patterns with Julia set-inspired mathematics.
 
-    // Create animated rainbow gradient
-    vec3 col = 0.5 + 0.5 * cos(iTime + uv.xyx * 3.14159 + vec3(0, 2, 4));
+### 🌌 Aurora
+Aurora borealis-inspired flowing waves and gradients.
 
-    gl_FragColor = vec4(col, 1.0);
-}
-```
-
-## Built-in Examples
-
-- **Plasma**: Animated plasma effect with rainbow colors
-- **Rainbow Gradient**: Simple animated color gradient
-- **Mandelbrot Set**: Animated fractal visualization with zoom
-- **Tunnel Effect**: Mesmerizing 3D tunnel illusion
-- **Wave Pattern**: Radial wave interference pattern
-- **Fire Effect**: Procedural fire simulation with noise
+### 🌠 Nebula
+Space nebula effect with procedural noise and stars.
 
 ## Controls
 
-| Control | Description |
-|---------|-------------|
-| **Play/Pause** | Toggle animation playback |
-| **Reset** | Reset time to 0.00s |
-| **Export .frag** | Download current shader as a file |
-| **Examples** | Load a pre-built example shader |
-| **Resolution** | Adjust preview quality (lower = better performance) |
+### Effect Type
+Select from 8 different shader effects.
+
+### Animation
+- **Speed** (0-3): Animation speed multiplier
+- **Complexity** (0.1-3): Pattern complexity and detail level
+- **Scale** (0.1-5): Zoom level and pattern size
+
+### Colors
+- **Color 1/2/3**: Three color pickers for gradient control
+- **Color Intensity** (0-2): Overall color saturation
+- **Color Shift** (-3.14 to 3.14): Hue rotation offset
+
+### Pattern
+- **Distortion** (0-2): Pattern warping and deformation
+- **Symmetry** (1-12): Number of symmetry axes
+- **Glow** (0-1): Radial glow intensity
+- **Brightness** (0-2): Overall brightness multiplier
+
+### Buttons
+- **🎲 Randomize**: Generate random shader with all parameters
+- **🔄 Reset**: Reset animation time to zero
+- **⏸ Pause / ▶ Play**: Toggle animation playback
+- **💾 Export .frag**: Download generated shader code
+
+## Usage Tips
+
+### Creating Beautiful Shaders
+
+1. **Start with an Effect** - Choose a base effect type
+2. **Adjust Speed** - Slower speeds (0.3-0.7) are often more elegant
+3. **Play with Colors** - Try complementary or analogous color schemes
+4. **Add Symmetry** - Values like 3, 6, 8, or 12 create pleasing patterns
+5. **Fine-tune Glow** - Small amounts (0.1-0.3) add depth
+6. **Experiment** - Hit Randomize until you find something inspiring!
+
+### Color Scheme Ideas
+
+- **Sunset**: Orange (#ff6b35), Pink (#ff006e), Purple (#8338ec)
+- **Ocean**: Cyan (#06ffa5), Blue (#3a86ff), Deep Blue (#0077b6)
+- **Fire**: Yellow (#ffbe0b), Orange (#fb5607), Red (#ff006e)
+- **Forest**: Light Green (#80ed99), Green (#57cc99), Dark Green (#22577a)
+- **Neon**: Pink (#ff006e), Cyan (#00f5ff), Yellow (#fbff00)
+
+### Performance Tips
+
+- Lower **Complexity** values improve performance
+- **Fractal** and **Nebula** effects are more computationally intensive
+- Check the **FPS counter** - aim for 60 FPS for smooth animation
+- On slower devices, reduce complexity and avoid fractal effects
 
 ## Browser Compatibility
 
-Requires a modern browser with WebGL support:
+Requires WebGL support:
 
 - ✅ Chrome/Edge 9+
 - ✅ Firefox 4+
@@ -86,83 +119,118 @@ Requires a modern browser with WebGL support:
 
 ```
 slingshot-shader-test/
-├── index.html           # Main application page
-├── styles.css           # UI styling
-├── shader-editor.js     # Core application logic
-└── README.md           # This file
+├── index.html          # Main application
+├── styles.css          # UI styling
+├── shader-editor.js    # Shader generation engine
+└── README.md          # This file
 ```
 
 ## How It Works
 
-1. **WebGL Context**: Creates a WebGL rendering context on the canvas
-2. **Vertex Shader**: Simple pass-through shader that covers the entire canvas
-3. **Fragment Shader**: Your custom shader code runs for every pixel
-4. **Animation Loop**: `requestAnimationFrame` updates uniforms and renders each frame
-5. **CodeMirror**: Provides syntax highlighting and editing features
-6. **Auto-Compilation**: Shaders recompile automatically when you edit the code
+1. **Parameter UI**: Sliders and color pickers set shader parameters
+2. **Shader Generation**: JavaScript generates GLSL code based on parameters
+3. **WebGL Rendering**: Generated shader renders full-screen in real-time
+4. **Live Updates**: Changes trigger immediate shader recompilation
+5. **Export**: Current shader code can be exported as `.frag` file
 
-## Tips for Writing Shaders
+## Technical Details
 
-- Start with a basic example and modify it gradually
-- Use `iTime` to create animations
-- Normalize coordinates: `vec2 uv = gl_FragCoord.xy / iResolution.xy;`
-- For centered coordinates: `vec2 uv = (gl_FragCoord.xy * 2.0 - iResolution) / iResolution.y;`
-- Check the error message panel below the editor for compilation errors
-- Use `sin()`, `cos()`, and `length()` for interesting patterns
-- Experiment with color gradients using `cos()` functions
+### Generated Uniforms
 
-## Advanced Techniques
+All created shaders include these uniforms:
 
-### Distance Fields
 ```glsl
-float circle(vec2 p, float r) {
-    return length(p) - r;
-}
+uniform float iTime;              // Current time
+uniform vec2 iResolution;         // Screen resolution
+uniform float speed;              // Speed multiplier
+uniform float complexity;         // Pattern complexity
+uniform float scale;              // Zoom level
+uniform vec3 color1;              // First color (RGB)
+uniform vec3 color2;              // Second color (RGB)
+uniform vec3 color3;              // Third color (RGB)
+uniform float colorIntensity;     // Color saturation
+uniform float colorShift;         // Hue rotation
+uniform float distortion;         // Pattern distortion
+uniform int symmetry;             // Symmetry count
+uniform float glow;               // Glow intensity
+uniform float brightness;         // Brightness multiplier
 ```
 
-### Rotation
-```glsl
-mat2 rot(float a) {
-    float c = cos(a), s = sin(a);
-    return mat2(c, -s, s, c);
-}
+### Shader Template
+
+Each effect type has a unique algorithm that responds to the parameters above. The final shader applies color adjustments, glow, and brightness uniformly across all effects.
+
+## Use Cases
+
+- **VJ Loops**: Create animated backgrounds for live performances
+- **Game Assets**: Generate shader effects for games
+- **Art Projects**: Create generative art with shaders
+- **Learning**: Understand shader programming without coding
+- **Wallpapers**: Export and use as animated desktop backgrounds
+- **Web Backgrounds**: Use generated shaders in web projects
+
+## Exporting Shaders
+
+When you click **Export .frag**, the app generates a complete GLSL fragment shader file including:
+
+- All uniform declarations
+- Your chosen effect algorithm
+- Color processing and post-effects
+- The shader is ready to use in ShaderToy, Unity, or other WebGL applications
+
+**Note**: Exported shaders include the uniform values as declarations but rely on the host application to pass uniform values at runtime.
+
+## FAQ
+
+**Q: Can I write custom shader code?**
+A: No, this is a no-code editor. All shaders are generated from UI parameters.
+
+**Q: Can I save my parameters?**
+A: Currently, parameters aren't saved. Use the Export button to save the generated shader code.
+
+**Q: Why is my FPS low?**
+A: Try reducing Complexity or choosing simpler effects like Plasma or Waves.
+
+**Q: Can I use exported shaders commercially?**
+A: Yes! Generated shaders are yours to use however you like.
+
+**Q: How do I get the shader into my game/app?**
+A: Export the .frag file and integrate it into your WebGL, Three.js, Unity, or other shader pipeline.
+
+## Advanced: Using Exported Shaders
+
+### In Three.js
+
+```javascript
+const material = new THREE.ShaderMaterial({
+    uniforms: {
+        iTime: { value: 0 },
+        iResolution: { value: new THREE.Vector2(width, height) },
+        // ... add other uniforms
+    },
+    fragmentShader: `/* paste exported shader here */`,
+    // ... vertex shader
+});
 ```
 
-### Noise (Simple)
-```glsl
-float noise(vec2 p) {
-    return fract(sin(dot(p, vec2(12.9898, 78.233))) * 43758.5453);
-}
-```
+### In ShaderToy
 
-## Troubleshooting
+Replace ShaderToy's uniforms (`iTime`, `iResolution`) with your exported shader's code and add sliders for custom uniforms.
 
-**Black screen?**
-- Check the error message panel below the code editor
-- Ensure your shader has a `main()` function
-- Make sure you set `gl_FragColor` in your shader
+### In Unity
 
-**Low FPS?**
-- Reduce the resolution using the slider
-- Simplify complex calculations in your shader
-- Avoid expensive operations in tight loops
+Convert the shader to Unity's shader syntax or use as a compute shader with appropriate uniform mapping.
 
-**Shader won't compile?**
-- Check for syntax errors in the error panel
-- Ensure all uniforms are declared with correct types
-- Use `precision mediump float;` at the top of your shader
+## Contributing
+
+Found a bug or want to suggest a new effect? This is an open-source project - contributions welcome!
 
 ## License
 
-This project is open source and available for educational and personal use.
-
-## Resources
-
-- [The Book of Shaders](https://thebookofshaders.com/) - Learn shader programming
-- [Shadertoy](https://www.shadertoy.com/) - Share and explore shaders
-- [WebGL Fundamentals](https://webglfundamentals.org/) - Learn WebGL
-- [GLSL Reference](https://www.khronos.org/opengl/wiki/OpenGL_Shading_Language) - Language specification
+Free to use for personal and commercial projects.
 
 ---
 
-**Happy Shader Coding!** 🎨✨
+**Create Beautiful Shaders Visually** 🎨✨
+
+No code. Just creativity.
