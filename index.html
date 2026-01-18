@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fragment Shader Editor</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/theme/monokai.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>✨ Fragment Shader Editor</h1>
+            <div class="header-controls">
+                <button id="playBtn" class="btn btn-primary" title="Play/Pause animation">
+                    <span id="playIcon">⏸</span> Pause
+                </button>
+                <button id="resetBtn" class="btn" title="Reset time">🔄 Reset</button>
+                <button id="exportBtn" class="btn btn-success" title="Export shader as .frag file">💾 Export .frag</button>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <div class="editor-panel">
+                <div class="panel-header">
+                    <h2>Shader Code</h2>
+                    <div class="panel-controls">
+                        <label for="exampleSelect">Examples:</label>
+                        <select id="exampleSelect" class="select">
+                            <option value="">-- Select Example --</option>
+                            <option value="plasma">Plasma</option>
+                            <option value="rainbow">Rainbow Gradient</option>
+                            <option value="mandelbrot">Mandelbrot Set</option>
+                            <option value="tunnel">Tunnel Effect</option>
+                            <option value="wave">Wave Pattern</option>
+                            <option value="fire">Fire Effect</option>
+                        </select>
+                    </div>
+                </div>
+                <textarea id="shaderCode"></textarea>
+                <div class="error-message" id="errorMessage"></div>
+            </div>
+
+            <div class="preview-panel">
+                <div class="panel-header">
+                    <h2>Live Preview</h2>
+                    <div class="info">
+                        <span id="fpsCounter">FPS: 0</span>
+                        <span id="timeCounter">Time: 0.00s</span>
+                    </div>
+                </div>
+                <div class="canvas-container">
+                    <canvas id="glCanvas"></canvas>
+                </div>
+                <div class="controls">
+                    <label for="resolutionSlider">Resolution:</label>
+                    <input type="range" id="resolutionSlider" min="0.25" max="2" step="0.25" value="1">
+                    <span id="resolutionValue">1.0x</span>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>Tips: Use <code>uniform float iTime</code> for animation, <code>uniform vec2 iResolution</code> for canvas size, <code>uniform vec2 iMouse</code> for mouse position</p>
+        </footer>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/clike/clike.min.js"></script>
+    <script src="shader-editor.js"></script>
+</body>
+</html>
