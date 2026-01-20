@@ -1,4 +1,5 @@
 // Shader Studio - Therapeutic Background Generator for Ash AI Therapy App
+// Brand-aligned warm & earthy shader presets
 
 class ShaderStudio {
     constructor() {
@@ -12,21 +13,21 @@ class ShaderStudio {
         this.lastFPSUpdate = Date.now();
         this.fps = 0;
 
-        // Shader parameters
+        // Shader parameters - Brand-aligned defaults
         this.params = {
-            effectType: 'breath',
-            speed: 0.5,
-            complexity: 0.8,
+            effectType: 'warmglow',
+            speed: 0.6,
+            complexity: 1.2,
             scale: 1.0,
-            color1: '#1a1a2e',
-            color2: '#16213e',
-            color3: '#0f3460',
-            colorIntensity: 0.8,
+            color1: '#E67E50',  // Warm coral/orange
+            color2: '#F5A962',  // Golden orange
+            color3: '#7D8F69',  // Sage green
+            colorIntensity: 1.2,
             colorShift: 0.0,
-            distortion: 0.3,
+            distortion: 0.5,
             symmetry: 1,
-            glow: 0.15,
-            brightness: 0.6
+            glow: 0.3,
+            brightness: 1.1
         };
 
         this.init();
@@ -128,36 +129,39 @@ class ShaderStudio {
     }
 
     randomize() {
-        const effects = ['breath', 'flow', 'quiet', 'ocean', 'dawn', 'evening', 'meditation', 'balance', 'clarity', 'peace', 'focus', 'tranquil'];
+        const effects = ['warmglow', 'earthrise', 'sage', 'sunset', 'terracotta', 'goldenhr', 'forest', 'amber', 'zenstone', 'clay', 'meadow', 'warmth'];
         this.params.effectType = effects[Math.floor(Math.random() * effects.length)];
         document.getElementById('effectType').value = this.params.effectType;
 
-        this.params.speed = 0.2 + Math.random() * 1.5;
-        this.params.complexity = 0.3 + Math.random() * 1.5;
-        this.params.scale = 0.5 + Math.random() * 2;
-        this.params.colorIntensity = 0.5 + Math.random() * 1;
-        this.params.distortion = Math.random() * 0.8;
-        this.params.glow = Math.random() * 0.4;
-        this.params.brightness = 0.4 + Math.random() * 0.8;
+        this.params.speed = 0.3 + Math.random() * 1.2;
+        this.params.complexity = 0.8 + Math.random() * 1.5;
+        this.params.scale = 0.7 + Math.random() * 1.8;
+        this.params.colorIntensity = 1.0 + Math.random() * 0.8;
+        this.params.distortion = 0.2 + Math.random() * 1.0;
+        this.params.glow = 0.2 + Math.random() * 0.5;
+        this.params.brightness = 0.9 + Math.random() * 0.8;
 
-        // Subtle colors for therapy app
-        this.params.color1 = this.randomTherapeuticColor();
-        this.params.color2 = this.randomTherapeuticColor();
-        this.params.color3 = this.randomTherapeuticColor();
+        // Brand-aligned color randomization
+        this.params.color1 = this.randomBrandColor();
+        this.params.color2 = this.randomBrandColor();
+        this.params.color3 = this.randomBrandColor();
 
         this.updateUI();
         this.generateAndCompileShader();
     }
 
-    randomTherapeuticColor() {
-        const palettes = [
-            ['#1a1a2e', '#16213e', '#0f3460', '#1b2631', '#1c2833'],
-            ['#0a0e27', '#1a237e', '#283593', '#1e1e2e', '#191970'],
-            ['#0d1117', '#161b22', '#21262d', '#1f2937', '#111827'],
-            ['#1a1a40', '#1e1e3f', '#25274d', '#1b1b3a', '#2c2c54']
+    randomBrandColor() {
+        const brandPalette = [
+            // Warm oranges & corals
+            '#E67E50', '#F5A962', '#FF8C42', '#E8956C', '#F4A261', '#ED9455',
+            // Sage & olive greens
+            '#7D8F69', '#6B7F5C', '#8B9D6F', '#73856A', '#8A9B7A', '#6F8062',
+            // Earth tones
+            '#B89176', '#A17F6B', '#C4A578', '#9B8169', '#D4A574',
+            // Creams & warm neutrals
+            '#EDE8DC', '#F5F1E8', '#E8DCC8', '#DDD5C7'
         ];
-        const palette = palettes[Math.floor(Math.random() * palettes.length)];
-        return palette[Math.floor(Math.random() * palette.length)];
+        return brandPalette[Math.floor(Math.random() * brandPalette.length)];
     }
 
     updateUI() {
@@ -199,192 +203,208 @@ class ShaderStudio {
         let shaderEffectCode = '';
 
         switch (p.effectType) {
-            case 'breath':
-                // Gentle breathing pattern - slow, centered waves
-                shaderEffectCode = `
-    vec2 centered = uv * scale;
-    float breathe = sin(t * 0.5) * 0.5 + 0.5;
-
-    float dist = length(centered);
-    float wave = sin(dist * 2.0 - t * 0.3) * exp(-dist * 0.5);
-    wave *= breathe;
-
-    float pattern = wave * 0.5 + 0.5;
-    vec3 col = mix(color1, mix(color2, color3, breathe), pattern);
-    col *= 0.3 + breathe * 0.4;
-                `;
-                break;
-
-            case 'flow':
-                // Serene flowing gradients
+            case 'warmglow':
+                // Warm radial glow emanating from center
                 shaderEffectCode = `
     vec2 p = uv * scale;
-    float flow1 = sin(p.x * complexity + t * 0.2);
-    float flow2 = cos(p.y * complexity - t * 0.15);
+    float dist = length(p);
 
-    float pattern = (flow1 + flow2) * 0.25 + 0.5;
-    pattern *= exp(-length(p) * distortion * 0.3);
+    float glow1 = exp(-dist * complexity * 0.8);
+    float glow2 = exp(-dist * complexity * 1.5);
+    float pulse = sin(t * 0.8) * 0.3 + 0.7;
+
+    float pattern = (glow1 * 0.7 + glow2 * 0.3) * pulse;
+    pattern += sin(dist * 3.0 - t * 0.5) * 0.15 * exp(-dist * 0.5);
 
     vec3 col = mix(color1, color2, pattern);
-    col = mix(col, color3, sin(t * 0.1 + pattern) * 0.5 + 0.5);
+    col = mix(col, color3, sin(t * 0.3 + dist * 2.0) * 0.4 + 0.5);
                 `;
                 break;
 
-            case 'quiet':
-                // Minimal, quiet movement
+            case 'earthrise':
+                // Rising gradient with organic waves
                 shaderEffectCode = `
     vec2 p = uv * scale;
-    float quiet = sin(t * 0.1) * 0.1;
+    float rise = (p.y + 1.0) * 0.5;
 
-    float pattern = length(p + vec2(quiet, -quiet * 0.7));
-    pattern = sin(pattern * complexity) * 0.3 + 0.5;
+    float wave = sin(p.x * complexity * 3.0 + t * 0.4) * 0.15;
+    wave += sin(p.x * complexity * 1.5 - t * 0.3) * 0.1;
 
-    vec3 col = mix(color1, color2, pattern);
-    col = mix(col, color3, sin(t * 0.05) * 0.2 + 0.3);
+    float pattern = pow(rise + wave, 1.3);
+    pattern *= sin(t * 0.2) * 0.2 + 0.9;
+
+    vec3 col = mix(color3, color2, pattern);
+    col = mix(col, color1, pattern * 0.7);
                 `;
                 break;
 
-            case 'ocean':
-                // Gentle ocean waves
+            case 'sage':
+                // Organic flowing sage-inspired patterns
                 shaderEffectCode = `
     vec2 p = uv * scale;
-    float wave1 = sin(p.x * complexity * 2.0 + t * 0.3);
-    float wave2 = sin((p.x + p.y) * complexity + t * 0.2);
 
-    float pattern = (wave1 + wave2) * 0.25 + 0.5;
-    pattern *= smoothstep(1.5, 0.0, length(p));
+    float flow1 = sin(p.x * complexity + t * 0.3 + sin(p.y * 2.0));
+    float flow2 = cos(p.y * complexity * 0.8 - t * 0.25 + cos(p.x * 1.5));
 
-    vec3 col = mix(color1, color2, pattern);
-    col = mix(col, color3, wave1 * 0.3 + 0.5);
+    float pattern = (flow1 + flow2) * 0.35 + 0.5;
+    pattern *= exp(-length(p) * distortion * 0.2);
+
+    float accent = sin(length(p) * 4.0 - t * 0.4) * 0.2 + 0.8;
+
+    vec3 col = mix(color3, mix(color2, color1, pattern * 0.6), pattern);
+    col *= accent;
                 `;
                 break;
 
-            case 'dawn':
-                // Soft dawn light transitions
+            case 'sunset':
+                // Warm sunset gradient with soft movement
                 shaderEffectCode = `
     vec2 p = uv * scale;
-    float dawn = sin(t * 0.15) * 0.5 + 0.5;
-
-    float gradient = (p.y + 1.0) * 0.5;
-    gradient = pow(gradient, 1.5);
-
-    float pattern = gradient * dawn;
-
-    vec3 col = mix(color1, color2, pattern);
-    col = mix(col, color3, dawn * 0.6);
-                `;
-                break;
-
-            case 'evening':
-                // Evening fade effect
-                shaderEffectCode = `
-    vec2 p = uv * scale;
-    float evening = cos(t * 0.12) * 0.5 + 0.5;
-
     float gradient = 1.0 - (p.y + 1.0) * 0.5;
     gradient = pow(gradient, 1.2);
 
-    float pattern = gradient * evening;
+    float drift = sin(t * 0.2 + p.x * 2.0) * 0.15;
+    float pattern = gradient + drift;
+
+    float shimmer = sin(p.x * complexity * 5.0 + t * 0.5) * 0.1;
+    pattern += shimmer;
+
+    vec3 col = mix(color2, color1, pattern * 0.8);
+    col = mix(col, color3, (1.0 - pattern) * 0.4);
+                `;
+                break;
+
+            case 'terracotta':
+                // Earthy terracotta waves
+                shaderEffectCode = `
+    vec2 p = uv * scale;
+
+    float wave1 = sin(p.y * complexity * 2.0 + t * 0.35);
+    float wave2 = cos(p.x * complexity * 1.5 - t * 0.4);
+
+    float pattern = (wave1 * wave2) * 0.4 + 0.5;
+    pattern *= smoothstep(1.8, 0.2, length(p));
+
+    float layer = sin(p.x * 3.0 + p.y * 2.0 + t * 0.25) * 0.2 + 0.8;
+
+    vec3 col = mix(color1, color2, pattern);
+    col = mix(col, color3, wave1 * 0.3 + 0.4);
+    col *= layer;
+                `;
+                break;
+
+            case 'goldenhr':
+                // Golden hour warm diffusion
+                shaderEffectCode = `
+    vec2 p = uv * scale;
+    float dist = length(p);
+
+    float rays = sin(atan(p.y, p.x) * 8.0 + t * 0.3) * 0.2 + 0.8;
+    float diffuse = exp(-dist * complexity * 0.6);
+
+    float pattern = diffuse * rays;
+    pattern += sin(dist * 4.0 - t * 0.5) * 0.15 * diffuse;
+
+    vec3 col = mix(color2, color1, pattern * 0.9);
+    col = mix(col, color3, (1.0 - diffuse) * 0.5);
+                `;
+                break;
+
+            case 'forest':
+                // Forest dappled light pattern
+                shaderEffectCode = `
+    vec2 p = uv * scale;
+
+    float dapple = sin(p.x * complexity * 4.0 + sin(p.y * 3.0 + t * 0.2)) * 0.5 + 0.5;
+    dapple *= cos(p.y * complexity * 3.0 + cos(p.x * 2.0 - t * 0.15)) * 0.5 + 0.5;
+
+    float depth = exp(-length(p) * 0.3);
+    float pattern = dapple * depth * 0.8 + 0.2;
 
     vec3 col = mix(color3, color2, pattern);
-    col = mix(col, color1, evening * 0.5);
+    col = mix(col, color1, dapple * 0.4);
                 `;
                 break;
 
-            case 'meditation':
-                // Centered radial calm
+            case 'amber':
+                // Amber waves of warmth
+                shaderEffectCode = `
+    vec2 p = uv * scale;
+
+    float wave = sin(p.x * complexity * 2.5 + t * 0.4) * cos(p.y * complexity * 1.8 - t * 0.3);
+    wave = wave * 0.4 + 0.5;
+
+    float flow = sin(length(p) * 3.0 - t * 0.35) * 0.2 + 0.8;
+    float pattern = wave * flow;
+
+    vec3 col = mix(color1, color2, pattern);
+    col = mix(col, color3, sin(wave * 6.28 + t * 0.3) * 0.3 + 0.5);
+                `;
+                break;
+
+            case 'zenstone':
+                // Zen stone ripples
                 shaderEffectCode = `
     vec2 p = uv * scale;
     float dist = length(p);
 
-    float rings = sin(dist * complexity * 5.0 - t * 0.2) * 0.5 + 0.5;
-    rings *= exp(-dist * 0.8);
+    float ripples = sin(dist * complexity * 6.0 - t * 0.4) * 0.5 + 0.5;
+    ripples *= exp(-dist * 0.6);
 
-    float pulse = sin(t * 0.3) * 0.3 + 0.7;
+    float pulse = sin(t * 0.35) * 0.25 + 0.75;
+    float pattern = ripples * pulse;
 
-    float pattern = rings * pulse;
-    vec3 col = mix(color1, color2, pattern);
-    col = mix(col, color3, rings);
+    vec3 col = mix(color3, color2, pattern);
+    col = mix(col, color1, ripples * 0.5);
                 `;
                 break;
 
-            case 'balance':
-                // Symmetrical, balanced patterns
-                shaderEffectCode = `
-    vec2 p = uv * scale;
-    float angle = atan(p.y, p.x);
-    float radius = length(p);
-
-    float symmetry = sin(angle * 4.0) * cos(radius * complexity - t * 0.2);
-    symmetry = symmetry * 0.5 + 0.5;
-
-    float pattern = symmetry * exp(-radius * 0.5);
-    vec3 col = mix(color1, color2, pattern);
-    col = mix(col, color3, symmetry * 0.7);
-                `;
-                break;
-
-            case 'clarity':
-                // Clean, clear patterns
+            case 'clay':
+                // Clay and earth texture
                 shaderEffectCode = `
     vec2 p = uv * scale;
 
-    float clear = abs(sin(p.x * complexity + t * 0.2));
-    clear *= abs(cos(p.y * complexity - t * 0.15));
+    float texture1 = sin(p.x * complexity * 6.0 + t * 0.2) * 0.5 + 0.5;
+    float texture2 = cos(p.y * complexity * 5.0 - t * 0.15) * 0.5 + 0.5;
 
-    float pattern = smoothstep(0.3, 0.7, clear);
+    float pattern = (texture1 * texture2) * 0.7 + 0.3;
+    pattern *= smoothstep(2.0, 0.3, length(p));
 
     vec3 col = mix(color1, color2, pattern);
-    col = mix(col, color3, sin(t * 0.1) * 0.3 + 0.5);
+    col = mix(col, color3, texture1 * 0.4 + 0.3);
                 `;
                 break;
 
-            case 'peace':
-                // Very subtle, peaceful movement
+            case 'meadow':
+                // Meadow breeze movement
                 shaderEffectCode = `
     vec2 p = uv * scale;
-    float peace = sin(t * 0.08) * 0.15 + 0.85;
 
-    float soft = smoothstep(1.0, 0.0, length(p));
-    soft *= peace;
+    float breeze1 = sin(p.x * complexity * 2.0 + t * 0.3 + sin(p.y * 3.0));
+    float breeze2 = cos(p.y * complexity * 1.5 - t * 0.25 + cos(p.x * 2.5));
 
-    float pattern = soft * (sin(t * 0.05) * 0.1 + 0.9);
+    float pattern = (breeze1 + breeze2) * 0.35 + 0.5;
+    float fade = smoothstep(2.0, 0.0, length(p));
 
-    vec3 col = mix(color1, color2, pattern);
-    col = mix(col, color3, soft * 0.5);
+    vec3 col = mix(color3, color2, pattern * fade);
+    col = mix(col, color1, breeze1 * 0.3 + 0.4);
                 `;
                 break;
 
-            case 'focus':
-                // Centered focus point
+            case 'warmth':
+                // Inner warmth radiating outward
                 shaderEffectCode = `
     vec2 p = uv * scale;
     float dist = length(p);
 
-    float focus = exp(-dist * complexity);
-    focus *= sin(t * 0.15) * 0.2 + 0.8;
+    float warmth = exp(-dist * complexity);
+    float pulse = sin(t * 0.4) * 0.3 + 0.7;
 
-    float pattern = focus;
+    float rings = sin(dist * 5.0 - t * 0.3) * 0.15;
+    float pattern = warmth * pulse + rings;
 
-    vec3 col = mix(color1, color2, pattern);
-    col = mix(col, color3, focus * 0.6);
-                `;
-                break;
-
-            case 'tranquil':
-                // Soft ambient movement
-                shaderEffectCode = `
-    vec2 p = uv * scale;
-
-    float ambient = sin(p.x * complexity * 0.5 + t * 0.1);
-    ambient += cos(p.y * complexity * 0.7 - t * 0.08);
-    ambient = ambient * 0.25 + 0.5;
-
-    float fade = exp(-length(p) * 0.4);
-    float pattern = ambient * fade;
-
-    vec3 col = mix(color1, color2, pattern);
-    col = mix(col, color3, ambient);
+    vec3 col = mix(color1, color2, pattern * 0.8);
+    col = mix(col, color3, (1.0 - warmth) * 0.6);
                 `;
                 break;
         }
@@ -411,18 +431,18 @@ void main() {
 
     ${shaderEffectCode}
 
-    // Apply subtle color adjustments
+    // Apply color saturation
     col *= colorIntensity;
 
-    // Apply gentle glow
+    // Apply glow
     float dist = length(uv);
-    col += vec3(glow * 0.3) / (dist * 3.0 + 1.0);
+    col += vec3(glow * 0.4) / (dist * 2.5 + 1.0);
 
     // Apply brightness
     col *= brightness;
 
-    // Clamp and ensure dark, therapeutic aesthetic
-    col = clamp(col, 0.0, 0.8);
+    // Clamp to prevent too much brightness while keeping prominence
+    col = clamp(col, 0.0, 1.3);
 
     gl_FragColor = vec4(col, 1.0);
 }

@@ -1,16 +1,17 @@
 # Shader Studio
 
-A minimal no-code shader creator for generating therapeutic background animations. Designed with a technical black/white aesthetic for the Ash AI therapy mobile app.
+A minimal no-code shader creator for generating warm, earthy therapeutic background animations. Designed for the Ash AI therapy mobile app with brand-aligned colors and artistic direction.
 
 ## Overview
 
-Create calming, professional shader backgrounds without writing code. Features 12 carefully curated therapeutic presets suitable for mental health and wellness applications.
+Create calming, visually prominent shader backgrounds using Ash's warm orange/coral and sage green color palette. Features 12 artistically curated presets that feel cohesive with the brand's earthy, natural aesthetic.
 
 ## Features
 
-- **12 Therapeutic Presets** - Curated shader effects designed for calm, focus, and wellbeing
-- **No-Code Interface** - Visual controls with real-time preview
-- **Technical Aesthetic** - Minimal black/white design with subtle blue accents
+- **12 Brand-Aligned Presets** - Warm, earthy shaders using orange, coral, sage, and earth tones
+- **Prominent Visual Presence** - More visible and engaging than traditional therapy backgrounds
+- **Artistic Direction** - Each preset has a unique character (glow, waves, gradients, textures)
+- **Technical Aesthetic** - Minimal black/white UI with conservative blue accents
 - **Full-Screen Preview** - Immersive shader background with right sidebar controls
 - **Real-Time Adjustments** - See changes instantly as parameters are modified
 - **Export Functionality** - Save generated shaders as .frag files
@@ -20,133 +21,160 @@ Create calming, professional shader backgrounds without writing code. Features 1
 1. Open `index.html` in a modern web browser
 2. Select a preset from the dropdown
 3. Adjust parameters using sliders
-4. Customize colors with the color pickers
+4. Customize with brand color pickers
 5. Export your shader when satisfied
 
 No installation or build process required.
 
-## Therapeutic Presets
+## Brand-Aligned Presets
 
-### 1. Gentle Breath
-Slow, centered breathing patterns. Ideal for meditation and breathing exercises.
-- Mimics inhalation/exhalation cycles
-- Calming radial waves
-- Very slow, deliberate movement
+### 1. Warm Glow
+Radiant warmth emanating from the center with gentle pulsing.
+- Central radial glow
+- Soft pulsing animation
+- Perfect for welcoming moments
 
-### 2. Serene Flow
-Soft flowing gradients with gentle transitions.
-- Horizontal and vertical flow
-- Smooth color blending
-- Peaceful, continuous movement
+### 2. Earth Rise
+Rising gradient with organic wave movement.
+- Bottom-to-top gradient
+- Flowing horizontal waves
+- Represents growth and progress
 
-### 3. Quiet Mind
-Minimal, subtle movement for deep focus states.
-- Almost imperceptible motion
-- Quiet, contemplative aesthetic
-- Perfect for concentration sessions
+### 3. Sage Garden
+Organic flowing patterns inspired by sage leaves.
+- Soft, natural flow
+- Green-dominant palette
+- Calm, grounded feeling
 
-### 4. Ocean Calm
-Gentle water-like wave patterns.
-- Horizontal wave motion
-- Soft, rhythmic movement
-- Evokes peaceful seascape
+### 4. Sunset Fade
+Warm sunset gradient with soft shimmer.
+- Top-to-bottom warm fade
+- Gentle horizontal drift
+- Evening calm aesthetic
 
-### 5. Dawn Light
-Soft light transitions from bottom to top.
-- Gradual brightening effect
-- Warm, hopeful aesthetic
-- Vertical gradient movement
+### 5. Terracotta Dream
+Earthy terracotta waves with layered texture.
+- Crossing wave patterns
+- Clay-like earth tones
+- Warm, grounded presence
 
-### 6. Evening Fade
-Sunset-inspired gradient with gentle fading.
-- Top-to-bottom gradient
-- Calming evening colors
-- Slow, peaceful transition
+### 6. Golden Hour
+Warm diffusion with subtle ray patterns.
+- Radial rays of light
+- Golden diffuse glow
+- Uplifting and warm
 
-### 7. Meditation
-Centered radial patterns with gentle pulsing.
-- Concentric rings from center
-- Subtle breathing rhythm
-- Focus point for meditation
+### 7. Forest Path
+Dappled light through forest canopy.
+- Organic dappled patterns
+- Green-forward palette
+- Natural, peaceful movement
 
-### 8. Balance
-Symmetrical, harmonious patterns.
-- Four-fold symmetry
-- Balanced, stable aesthetic
-- Represents equilibrium
+### 8. Amber Waves
+Flowing amber warmth across the canvas.
+- Wave interference patterns
+- Honey-amber tones
+- Smooth, continuous flow
 
-### 9. Clarity
-Clean, clear patterns with defined structure.
-- Grid-like formations
-- Sharp yet subtle
-- Represents mental clarity
+### 9. Zen Stone
+Concentric ripples like water on stone.
+- Centered ripple patterns
+- Meditative quality
+- Calm, focused energy
 
-### 10. Peace
-Very subtle, almost static background.
-- Minimal movement
-- Extremely gentle
-- Pure tranquility
+### 10. Clay & Earth
+Textured earth with clay-like qualities.
+- Cross-hatched texture
+- Raw earth aesthetic
+- Organic, handcrafted feel
 
-### 11. Focus
-Centered focus point with radial fade.
-- Strong center, soft edges
-- Directs attention inward
-- Aids concentration
+### 11. Meadow Breeze
+Gentle breeze moving through a meadow.
+- Soft flowing movement
+- Green and warm tones
+- Light, airy feeling
 
-### 12. Tranquil
-Soft ambient movement across the canvas.
-- Gentle, wandering motion
-- No sharp transitions
-- Ambient, soothing
+### 12. Inner Warmth
+Core warmth radiating outward with rings.
+- Central warmth source
+- Gentle rings of energy
+- Nurturing, safe feeling
+
+## Brand Color Palette
+
+### Primary Colors
+- **Warm Coral**: #E67E50
+- **Golden Orange**: #F5A962
+- **Sage Green**: #7D8F69
+
+### Extended Palette
+**Warm Oranges & Corals**
+- #E67E50, #F5A962, #FF8C42, #E8956C, #F4A261, #ED9455
+
+**Sage & Olive Greens**
+- #7D8F69, #6B7F5C, #8B9D6F, #73856A, #8A9B7A, #6F8062
+
+**Earth Tones**
+- #B89176, #A17F6B, #C4A578, #9B8169, #D4A574
+
+**Creams & Warm Neutrals**
+- #EDE8DC, #F5F1E8, #E8DCC8, #DDD5C7
 
 ## Parameters
 
 ### Animation
-- **Speed** (0-3): Controls animation speed
-- **Intensity** (0.1-3): Pattern complexity and detail level
-- **Scale** (0.1-5): Zoom level of the effect
+- **Speed** (0-3): Controls animation speed - Default: 0.6
+- **Intensity** (0.1-3): Pattern complexity and detail - Default: 1.2
+- **Scale** (0.1-5): Zoom level of the effect - Default: 1.0
 
 ### Colors
-- **Color 1/2/3**: Three color pickers for gradient control
-- **Intensity** (0-2): Overall color saturation
+- **Color 1/2/3**: Three brand-aligned color pickers
+- **Saturation** (0-2): Overall color intensity - Default: 1.2
 
 ### Pattern
-- **Distortion** (0-2): Pattern warping amount
-- **Glow** (0-1): Radial glow intensity
-- **Brightness** (0-2): Overall brightness level
+- **Flow** (0-2): Pattern warping and movement - Default: 0.5
+- **Glow** (0-1): Radial glow intensity - Default: 0.3
+- **Brightness** (0-2): Overall brightness level - Default: 1.1
 
 ## Controls
 
-- **RANDOMIZE**: Generate random therapeutic shader
+- **RANDOMIZE**: Generate random brand-aligned shader
 - **RESET TIME**: Reset animation to t=0
 - **PAUSE/PLAY**: Toggle animation playback
 - **EXPORT .FRAG**: Download GLSL shader code
 
 ## Design Philosophy
 
+### Brand Alignment
+- Warm, earthy color palette (orange, coral, sage, earth tones)
+- Natural, organic movements
+- More prominent than traditional therapy backgrounds
+- Artistic direction for each preset
+- Visually engaging while remaining calming
+
 ### Technical Aesthetic
 - Monospace Monaco/Courier New typography
 - Black background with subtle white/gray UI elements
 - Conservative use of blue accent color (rgba(100, 180, 255))
-- No gradients on UI elements
 - Sharp, precise controls
 - Minimal visual hierarchy
 
 ### Therapeutic Focus
-- All presets designed for calm, non-distracting backgrounds
-- Slow, deliberate movements (no jarring transitions)
-- Dark color palettes suitable for extended viewing
-- Brightness clamped to prevent eye strain
-- Subtle, professional aesthetic appropriate for healthcare
+- Designed for calm, supportive backgrounds
+- Moderate movement (not too slow, not jarring)
+- Warm color palettes for comfort and safety
+- Increased brightness for prominence (1.1 default)
+- Professional aesthetic for healthcare
 
 ## Use in Ash AI Therapy App
 
-These shaders are specifically designed as background elements for a mental health application:
+These shaders are specifically designed as background elements for Ash:
 
-- **Non-Distracting**: Subtle enough to not interfere with foreground content
-- **Calming**: Scientifically-informed patterns that promote relaxation
-- **Professional**: Appropriate for healthcare/therapy context
-- **Accessible**: Low contrast, not overwhelming
+- **Brand-Aligned**: Uses Ash's warm orange/coral and sage green palette
+- **Prominent**: Visible and engaging without overwhelming foreground
+- **Supportive**: Warm colors create feeling of safety and comfort
+- **Natural**: Organic movements mirror nature and breathing
+- **Professional**: Appropriate for therapeutic context
 - **Performance**: Optimized for mobile devices
 
 ## Technical Details
@@ -157,16 +185,16 @@ All shaders include:
 ```glsl
 uniform float iTime;              // Animation time
 uniform vec2 iResolution;         // Canvas resolution
-uniform float speed;              // Speed multiplier
-uniform float complexity;         // Pattern intensity
-uniform float scale;              // Zoom level
-uniform vec3 color1;              // Primary color
-uniform vec3 color2;              // Secondary color
-uniform vec3 color3;              // Tertiary color
-uniform float colorIntensity;     // Color saturation
-uniform float distortion;         // Pattern distortion
-uniform float glow;               // Glow intensity
-uniform float brightness;         // Brightness multiplier
+uniform float speed;              // Speed multiplier (default: 0.6)
+uniform float complexity;         // Pattern intensity (default: 1.2)
+uniform float scale;              // Zoom level (default: 1.0)
+uniform vec3 color1;              // Primary color (E67E50)
+uniform vec3 color2;              // Secondary color (F5A962)
+uniform vec3 color3;              // Tertiary color (7D8F69)
+uniform float colorIntensity;     // Color saturation (default: 1.2)
+uniform float distortion;         // Pattern flow (default: 0.5)
+uniform float glow;               // Glow intensity (default: 0.3)
+uniform float brightness;         // Brightness multiplier (default: 1.1)
 ```
 
 ### Browser Compatibility
@@ -202,28 +230,24 @@ Exported .frag files contain complete GLSL fragment shaders that can be integrat
 - Mobile apps (iOS/Android with OpenGL ES)
 - Web applications (Three.js, WebGL)
 - Unity projects
-- Game engines
-- VJ software
+- React Native with expo-gl
+- Flutter with custom shaders
 
 The export includes all uniforms and requires the host application to provide uniform values at runtime.
 
-## Color Palettes
+## Artistic Direction
 
-Default therapeutic color palettes used in randomization:
+Each preset is designed with a specific mood and visual character:
 
-**Palette 1 - Deep Navy**
-- #1a1a2e, #16213e, #0f3460, #1b2631, #1c2833
+- **Warm Glow / Inner Warmth**: Central, radiating warmth
+- **Earth Rise / Sunset**: Gradient-based with directional flow
+- **Sage Garden / Meadow Breeze**: Organic, flowing movement
+- **Terracotta / Clay & Earth**: Textured, earthy quality
+- **Golden Hour / Amber Waves**: Light and warmth diffusion
+- **Forest Path**: Dappled, natural light patterns
+- **Zen Stone**: Meditative, centered ripples
 
-**Palette 2 - Midnight Blue**
-- #0a0e27, #1a237e, #283593, #1e1e2e, #191970
-
-**Palette 3 - Charcoal**
-- #0d1117, #161b22, #21262d, #1f2937, #111827
-
-**Palette 4 - Indigo Night**
-- #1a1a40, #1e1e3f, #25274d, #1b1b3a, #2c2c54
-
-All palettes are designed for dark backgrounds suitable for extended viewing in therapy/wellness contexts.
+All presets maintain therapeutic qualities while being visually engaging enough to serve as prominent app backgrounds.
 
 ## License
 
@@ -231,4 +255,4 @@ Free to use for personal and commercial projects.
 
 ---
 
-**Shader Studio** - Therapeutic background generator for Ash AI Therapy App
+**Shader Studio** - Brand-aligned therapeutic backgrounds for Ash AI Therapy App
