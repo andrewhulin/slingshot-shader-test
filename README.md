@@ -1,229 +1,229 @@
-# Shader Studio ✨
+# Shader Studio
 
-A beautiful **no-code** shader creator with real-time preview and export functionality. Create stunning visual effects with sliders and color pickers - no programming required!
+A minimal no-code shader creator for generating therapeutic background animations. Designed with a technical black/white aesthetic for the Ash AI therapy mobile app.
 
-![No Code Required](https://img.shields.io/badge/No%20Code-Required-green) ![WebGL](https://img.shields.io/badge/WebGL-Enabled-blue) ![100% Visual](https://img.shields.io/badge/100%25-Visual-purple)
+## Overview
+
+Create calming, professional shader backgrounds without writing code. Features 12 carefully curated therapeutic presets suitable for mental health and wellness applications.
 
 ## Features
 
-🎨 **100% No-Code** - Create beautiful shaders without writing a single line of code
-🌈 **8 Effect Types** - Plasma, Waves, Tunnel, Spiral, Kaleidoscope, Fractal, Aurora, Nebula
-🎚️ **Full Parameter Control** - Speed, Complexity, Scale, Distortion, Symmetry, Glow, Brightness
-🎨 **Color Customization** - Three color pickers with intensity and shift controls
-🎲 **Randomize** - Instantly generate random beautiful shaders
-💾 **Export** - Save generated shaders as `.frag` files
-📺 **Full-Screen Preview** - Immersive shader background with floating control panel
-⚡ **Real-Time** - See changes instantly as you adjust parameters
-📊 **Performance Monitor** - Live FPS counter
+- **12 Therapeutic Presets** - Curated shader effects designed for calm, focus, and wellbeing
+- **No-Code Interface** - Visual controls with real-time preview
+- **Technical Aesthetic** - Minimal black/white design with subtle blue accents
+- **Full-Screen Preview** - Immersive shader background with right sidebar controls
+- **Real-Time Adjustments** - See changes instantly as parameters are modified
+- **Export Functionality** - Save generated shaders as .frag files
 
 ## Quick Start
 
-1. **Open `index.html`** in any modern web browser
-2. **Choose an effect type** from the dropdown
-3. **Adjust sliders** to customize the effect
-4. **Pick colors** with the color pickers
-5. **Click Randomize** for instant inspiration
-6. **Export** to save your creation as a shader file
+1. Open `index.html` in a modern web browser
+2. Select a preset from the dropdown
+3. Adjust parameters using sliders
+4. Customize colors with the color pickers
+5. Export your shader when satisfied
 
-**That's it! No installation, no setup, no coding required!**
+No installation or build process required.
 
-## Effect Types
+## Therapeutic Presets
 
-### 🌀 Plasma
-Animated plasma effect with flowing colors and organic movement.
+### 1. Gentle Breath
+Slow, centered breathing patterns. Ideal for meditation and breathing exercises.
+- Mimics inhalation/exhalation cycles
+- Calming radial waves
+- Very slow, deliberate movement
 
-### 🌊 Waves
-Radial wave patterns with exponential falloff creating ripple effects.
+### 2. Serene Flow
+Soft flowing gradients with gentle transitions.
+- Horizontal and vertical flow
+- Smooth color blending
+- Peaceful, continuous movement
 
-### 🕳️ Tunnel
-Mesmerizing 3D tunnel illusion with spiral patterns.
+### 3. Quiet Mind
+Minimal, subtle movement for deep focus states.
+- Almost imperceptible motion
+- Quiet, contemplative aesthetic
+- Perfect for concentration sessions
 
-### 🌀 Spiral
-Rotating spiral patterns with customizable symmetry.
+### 4. Ocean Calm
+Gentle water-like wave patterns.
+- Horizontal wave motion
+- Soft, rhythmic movement
+- Evokes peaceful seascape
 
-### 🔷 Kaleidoscope
-Symmetrical kaleidoscope patterns with mirror reflections.
+### 5. Dawn Light
+Soft light transitions from bottom to top.
+- Gradual brightening effect
+- Warm, hopeful aesthetic
+- Vertical gradient movement
 
-### 🔮 Fractal
-Fractal iteration patterns with Julia set-inspired mathematics.
+### 6. Evening Fade
+Sunset-inspired gradient with gentle fading.
+- Top-to-bottom gradient
+- Calming evening colors
+- Slow, peaceful transition
 
-### 🌌 Aurora
-Aurora borealis-inspired flowing waves and gradients.
+### 7. Meditation
+Centered radial patterns with gentle pulsing.
+- Concentric rings from center
+- Subtle breathing rhythm
+- Focus point for meditation
 
-### 🌠 Nebula
-Space nebula effect with procedural noise and stars.
+### 8. Balance
+Symmetrical, harmonious patterns.
+- Four-fold symmetry
+- Balanced, stable aesthetic
+- Represents equilibrium
 
-## Controls
+### 9. Clarity
+Clean, clear patterns with defined structure.
+- Grid-like formations
+- Sharp yet subtle
+- Represents mental clarity
 
-### Effect Type
-Select from 8 different shader effects.
+### 10. Peace
+Very subtle, almost static background.
+- Minimal movement
+- Extremely gentle
+- Pure tranquility
+
+### 11. Focus
+Centered focus point with radial fade.
+- Strong center, soft edges
+- Directs attention inward
+- Aids concentration
+
+### 12. Tranquil
+Soft ambient movement across the canvas.
+- Gentle, wandering motion
+- No sharp transitions
+- Ambient, soothing
+
+## Parameters
 
 ### Animation
-- **Speed** (0-3): Animation speed multiplier
-- **Complexity** (0.1-3): Pattern complexity and detail level
-- **Scale** (0.1-5): Zoom level and pattern size
+- **Speed** (0-3): Controls animation speed
+- **Intensity** (0.1-3): Pattern complexity and detail level
+- **Scale** (0.1-5): Zoom level of the effect
 
 ### Colors
 - **Color 1/2/3**: Three color pickers for gradient control
-- **Color Intensity** (0-2): Overall color saturation
-- **Color Shift** (-3.14 to 3.14): Hue rotation offset
+- **Intensity** (0-2): Overall color saturation
 
 ### Pattern
-- **Distortion** (0-2): Pattern warping and deformation
-- **Symmetry** (1-12): Number of symmetry axes
+- **Distortion** (0-2): Pattern warping amount
 - **Glow** (0-1): Radial glow intensity
-- **Brightness** (0-2): Overall brightness multiplier
+- **Brightness** (0-2): Overall brightness level
 
-### Buttons
-- **🎲 Randomize**: Generate random shader with all parameters
-- **🔄 Reset**: Reset animation time to zero
-- **⏸ Pause / ▶ Play**: Toggle animation playback
-- **💾 Export .frag**: Download generated shader code
+## Controls
 
-## Usage Tips
+- **RANDOMIZE**: Generate random therapeutic shader
+- **RESET TIME**: Reset animation to t=0
+- **PAUSE/PLAY**: Toggle animation playback
+- **EXPORT .FRAG**: Download GLSL shader code
 
-### Creating Beautiful Shaders
+## Design Philosophy
 
-1. **Start with an Effect** - Choose a base effect type
-2. **Adjust Speed** - Slower speeds (0.3-0.7) are often more elegant
-3. **Play with Colors** - Try complementary or analogous color schemes
-4. **Add Symmetry** - Values like 3, 6, 8, or 12 create pleasing patterns
-5. **Fine-tune Glow** - Small amounts (0.1-0.3) add depth
-6. **Experiment** - Hit Randomize until you find something inspiring!
+### Technical Aesthetic
+- Monospace Monaco/Courier New typography
+- Black background with subtle white/gray UI elements
+- Conservative use of blue accent color (rgba(100, 180, 255))
+- No gradients on UI elements
+- Sharp, precise controls
+- Minimal visual hierarchy
 
-### Color Scheme Ideas
+### Therapeutic Focus
+- All presets designed for calm, non-distracting backgrounds
+- Slow, deliberate movements (no jarring transitions)
+- Dark color palettes suitable for extended viewing
+- Brightness clamped to prevent eye strain
+- Subtle, professional aesthetic appropriate for healthcare
 
-- **Sunset**: Orange (#ff6b35), Pink (#ff006e), Purple (#8338ec)
-- **Ocean**: Cyan (#06ffa5), Blue (#3a86ff), Deep Blue (#0077b6)
-- **Fire**: Yellow (#ffbe0b), Orange (#fb5607), Red (#ff006e)
-- **Forest**: Light Green (#80ed99), Green (#57cc99), Dark Green (#22577a)
-- **Neon**: Pink (#ff006e), Cyan (#00f5ff), Yellow (#fbff00)
+## Use in Ash AI Therapy App
 
-### Performance Tips
+These shaders are specifically designed as background elements for a mental health application:
 
-- Lower **Complexity** values improve performance
-- **Fractal** and **Nebula** effects are more computationally intensive
-- Check the **FPS counter** - aim for 60 FPS for smooth animation
-- On slower devices, reduce complexity and avoid fractal effects
+- **Non-Distracting**: Subtle enough to not interfere with foreground content
+- **Calming**: Scientifically-informed patterns that promote relaxation
+- **Professional**: Appropriate for healthcare/therapy context
+- **Accessible**: Low contrast, not overwhelming
+- **Performance**: Optimized for mobile devices
 
-## Browser Compatibility
+## Technical Details
+
+### Generated Uniforms
+
+All shaders include:
+```glsl
+uniform float iTime;              // Animation time
+uniform vec2 iResolution;         // Canvas resolution
+uniform float speed;              // Speed multiplier
+uniform float complexity;         // Pattern intensity
+uniform float scale;              // Zoom level
+uniform vec3 color1;              // Primary color
+uniform vec3 color2;              // Secondary color
+uniform vec3 color3;              // Tertiary color
+uniform float colorIntensity;     // Color saturation
+uniform float distortion;         // Pattern distortion
+uniform float glow;               // Glow intensity
+uniform float brightness;         // Brightness multiplier
+```
+
+### Browser Compatibility
 
 Requires WebGL support:
+- Chrome/Edge 9+
+- Firefox 4+
+- Safari 5.1+
+- Opera 12+
 
-- ✅ Chrome/Edge 9+
-- ✅ Firefox 4+
-- ✅ Safari 5.1+
-- ✅ Opera 12+
+### Performance
+
+All presets are optimized for:
+- 60 FPS on modern mobile devices
+- Low GPU usage
+- Efficient shader compilation
+- Minimal JavaScript overhead
 
 ## Project Structure
 
 ```
 slingshot-shader-test/
 ├── index.html          # Main application
-├── styles.css          # UI styling
+├── styles.css          # UI styling (technical aesthetic)
 ├── shader-editor.js    # Shader generation engine
-└── README.md          # This file
+└── README.md           # This file
 ```
-
-## How It Works
-
-1. **Parameter UI**: Sliders and color pickers set shader parameters
-2. **Shader Generation**: JavaScript generates GLSL code based on parameters
-3. **WebGL Rendering**: Generated shader renders full-screen in real-time
-4. **Live Updates**: Changes trigger immediate shader recompilation
-5. **Export**: Current shader code can be exported as `.frag` file
-
-## Technical Details
-
-### Generated Uniforms
-
-All created shaders include these uniforms:
-
-```glsl
-uniform float iTime;              // Current time
-uniform vec2 iResolution;         // Screen resolution
-uniform float speed;              // Speed multiplier
-uniform float complexity;         // Pattern complexity
-uniform float scale;              // Zoom level
-uniform vec3 color1;              // First color (RGB)
-uniform vec3 color2;              // Second color (RGB)
-uniform vec3 color3;              // Third color (RGB)
-uniform float colorIntensity;     // Color saturation
-uniform float colorShift;         // Hue rotation
-uniform float distortion;         // Pattern distortion
-uniform int symmetry;             // Symmetry count
-uniform float glow;               // Glow intensity
-uniform float brightness;         // Brightness multiplier
-```
-
-### Shader Template
-
-Each effect type has a unique algorithm that responds to the parameters above. The final shader applies color adjustments, glow, and brightness uniformly across all effects.
-
-## Use Cases
-
-- **VJ Loops**: Create animated backgrounds for live performances
-- **Game Assets**: Generate shader effects for games
-- **Art Projects**: Create generative art with shaders
-- **Learning**: Understand shader programming without coding
-- **Wallpapers**: Export and use as animated desktop backgrounds
-- **Web Backgrounds**: Use generated shaders in web projects
 
 ## Exporting Shaders
 
-When you click **Export .frag**, the app generates a complete GLSL fragment shader file including:
+Exported .frag files contain complete GLSL fragment shaders that can be integrated into:
 
-- All uniform declarations
-- Your chosen effect algorithm
-- Color processing and post-effects
-- The shader is ready to use in ShaderToy, Unity, or other WebGL applications
+- Mobile apps (iOS/Android with OpenGL ES)
+- Web applications (Three.js, WebGL)
+- Unity projects
+- Game engines
+- VJ software
 
-**Note**: Exported shaders include the uniform values as declarations but rely on the host application to pass uniform values at runtime.
+The export includes all uniforms and requires the host application to provide uniform values at runtime.
 
-## FAQ
+## Color Palettes
 
-**Q: Can I write custom shader code?**
-A: No, this is a no-code editor. All shaders are generated from UI parameters.
+Default therapeutic color palettes used in randomization:
 
-**Q: Can I save my parameters?**
-A: Currently, parameters aren't saved. Use the Export button to save the generated shader code.
+**Palette 1 - Deep Navy**
+- #1a1a2e, #16213e, #0f3460, #1b2631, #1c2833
 
-**Q: Why is my FPS low?**
-A: Try reducing Complexity or choosing simpler effects like Plasma or Waves.
+**Palette 2 - Midnight Blue**
+- #0a0e27, #1a237e, #283593, #1e1e2e, #191970
 
-**Q: Can I use exported shaders commercially?**
-A: Yes! Generated shaders are yours to use however you like.
+**Palette 3 - Charcoal**
+- #0d1117, #161b22, #21262d, #1f2937, #111827
 
-**Q: How do I get the shader into my game/app?**
-A: Export the .frag file and integrate it into your WebGL, Three.js, Unity, or other shader pipeline.
+**Palette 4 - Indigo Night**
+- #1a1a40, #1e1e3f, #25274d, #1b1b3a, #2c2c54
 
-## Advanced: Using Exported Shaders
-
-### In Three.js
-
-```javascript
-const material = new THREE.ShaderMaterial({
-    uniforms: {
-        iTime: { value: 0 },
-        iResolution: { value: new THREE.Vector2(width, height) },
-        // ... add other uniforms
-    },
-    fragmentShader: `/* paste exported shader here */`,
-    // ... vertex shader
-});
-```
-
-### In ShaderToy
-
-Replace ShaderToy's uniforms (`iTime`, `iResolution`) with your exported shader's code and add sliders for custom uniforms.
-
-### In Unity
-
-Convert the shader to Unity's shader syntax or use as a compute shader with appropriate uniform mapping.
-
-## Contributing
-
-Found a bug or want to suggest a new effect? This is an open-source project - contributions welcome!
+All palettes are designed for dark backgrounds suitable for extended viewing in therapy/wellness contexts.
 
 ## License
 
@@ -231,6 +231,4 @@ Free to use for personal and commercial projects.
 
 ---
 
-**Create Beautiful Shaders Visually** 🎨✨
-
-No code. Just creativity.
+**Shader Studio** - Therapeutic background generator for Ash AI Therapy App

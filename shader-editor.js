@@ -1,5 +1,4 @@
-// Shader Studio - No-Code Shader Creator
-// Generates beautiful shaders based on UI parameters
+// Shader Studio - Therapeutic Background Generator for Ash AI Therapy App
 
 class ShaderStudio {
     constructor() {
@@ -15,19 +14,19 @@ class ShaderStudio {
 
         // Shader parameters
         this.params = {
-            effectType: 'plasma',
-            speed: 1.0,
-            complexity: 1.0,
+            effectType: 'breath',
+            speed: 0.5,
+            complexity: 0.8,
             scale: 1.0,
-            color1: '#ff006e',
-            color2: '#8338ec',
-            color3: '#3a86ff',
-            colorIntensity: 1.0,
+            color1: '#1a1a2e',
+            color2: '#16213e',
+            color3: '#0f3460',
+            colorIntensity: 0.8,
             colorShift: 0.0,
-            distortion: 0.5,
+            distortion: 0.3,
             symmetry: 1,
-            glow: 0.2,
-            brightness: 1.0
+            glow: 0.15,
+            brightness: 0.6
         };
 
         this.init();
@@ -61,14 +60,6 @@ class ShaderStudio {
     }
 
     setupUI() {
-        // Panel toggle
-        document.getElementById('togglePanel').addEventListener('click', () => {
-            const panel = document.getElementById('controlPanel');
-            const btn = document.getElementById('togglePanel');
-            panel.classList.toggle('collapsed');
-            btn.textContent = panel.classList.contains('collapsed') ? '+' : '−';
-        });
-
         // Effect type
         this.setupControl('effectType', (value) => {
             this.params.effectType = value;
@@ -80,9 +71,7 @@ class ShaderStudio {
         this.setupSlider('complexity', 'complexityValue', (value) => this.params.complexity = value);
         this.setupSlider('scale', 'scaleValue', (value) => this.params.scale = value);
         this.setupSlider('colorIntensity', 'colorIntensityValue', (value) => this.params.colorIntensity = value);
-        this.setupSlider('colorShift', 'colorShiftValue', (value) => this.params.colorShift = value);
         this.setupSlider('distortion', 'distortionValue', (value) => this.params.distortion = value);
-        this.setupSlider('symmetry', 'symmetryValue', (value) => this.params.symmetry = parseInt(value));
         this.setupSlider('glow', 'glowValue', (value) => this.params.glow = value);
         this.setupSlider('brightness', 'brightnessValue', (value) => this.params.brightness = value);
 
@@ -123,17 +112,13 @@ class ShaderStudio {
 
     togglePlay() {
         this.isPlaying = !this.isPlaying;
-        const btn = document.getElementById('playBtn');
-        const icon = document.getElementById('playIcon');
         const text = document.getElementById('playText');
 
         if (this.isPlaying) {
-            icon.textContent = '⏸';
-            text.textContent = 'Pause';
+            text.textContent = 'PAUSE';
             this.startTime = Date.now() - this.currentTime * 1000;
         } else {
-            icon.textContent = '▶';
-            text.textContent = 'Play';
+            text.textContent = 'PLAY';
         }
     }
 
@@ -143,34 +128,36 @@ class ShaderStudio {
     }
 
     randomize() {
-        // Randomize effect type
-        const effects = ['plasma', 'waves', 'tunnel', 'spiral', 'kaleidoscope', 'fractal', 'aurora', 'nebula'];
+        const effects = ['breath', 'flow', 'quiet', 'ocean', 'dawn', 'evening', 'meditation', 'balance', 'clarity', 'peace', 'focus', 'tranquil'];
         this.params.effectType = effects[Math.floor(Math.random() * effects.length)];
         document.getElementById('effectType').value = this.params.effectType;
 
-        // Randomize parameters
-        this.params.speed = Math.random() * 3;
-        this.params.complexity = 0.1 + Math.random() * 2.9;
-        this.params.scale = 0.1 + Math.random() * 4.9;
-        this.params.colorIntensity = Math.random() * 2;
-        this.params.colorShift = (Math.random() - 0.5) * 6.28;
-        this.params.distortion = Math.random() * 2;
-        this.params.symmetry = Math.floor(1 + Math.random() * 12);
-        this.params.glow = Math.random();
-        this.params.brightness = 0.5 + Math.random() * 1.5;
+        this.params.speed = 0.2 + Math.random() * 1.5;
+        this.params.complexity = 0.3 + Math.random() * 1.5;
+        this.params.scale = 0.5 + Math.random() * 2;
+        this.params.colorIntensity = 0.5 + Math.random() * 1;
+        this.params.distortion = Math.random() * 0.8;
+        this.params.glow = Math.random() * 0.4;
+        this.params.brightness = 0.4 + Math.random() * 0.8;
 
-        // Random colors
-        this.params.color1 = this.randomColor();
-        this.params.color2 = this.randomColor();
-        this.params.color3 = this.randomColor();
+        // Subtle colors for therapy app
+        this.params.color1 = this.randomTherapeuticColor();
+        this.params.color2 = this.randomTherapeuticColor();
+        this.params.color3 = this.randomTherapeuticColor();
 
-        // Update UI
         this.updateUI();
         this.generateAndCompileShader();
     }
 
-    randomColor() {
-        return '#' + Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0');
+    randomTherapeuticColor() {
+        const palettes = [
+            ['#1a1a2e', '#16213e', '#0f3460', '#1b2631', '#1c2833'],
+            ['#0a0e27', '#1a237e', '#283593', '#1e1e2e', '#191970'],
+            ['#0d1117', '#161b22', '#21262d', '#1f2937', '#111827'],
+            ['#1a1a40', '#1e1e3f', '#25274d', '#1b1b3a', '#2c2c54']
+        ];
+        const palette = palettes[Math.floor(Math.random() * palettes.length)];
+        return palette[Math.floor(Math.random() * palette.length)];
     }
 
     updateUI() {
@@ -186,14 +173,8 @@ class ShaderStudio {
         document.getElementById('colorIntensity').value = this.params.colorIntensity;
         document.getElementById('colorIntensityValue').textContent = this.params.colorIntensity.toFixed(1);
 
-        document.getElementById('colorShift').value = this.params.colorShift;
-        document.getElementById('colorShiftValue').textContent = this.params.colorShift.toFixed(1);
-
         document.getElementById('distortion').value = this.params.distortion;
         document.getElementById('distortionValue').textContent = this.params.distortion.toFixed(1);
-
-        document.getElementById('symmetry').value = this.params.symmetry;
-        document.getElementById('symmetryValue').textContent = this.params.symmetry;
 
         document.getElementById('glow').value = this.params.glow;
         document.getElementById('glowValue').textContent = this.params.glow.toFixed(2);
@@ -215,130 +196,195 @@ class ShaderStudio {
 
     generateShaderCode() {
         const p = this.params;
-        const rgb1 = this.hexToRGB(p.color1);
-        const rgb2 = this.hexToRGB(p.color2);
-        const rgb3 = this.hexToRGB(p.color3);
-
         let shaderEffectCode = '';
 
         switch (p.effectType) {
-            case 'plasma':
+            case 'breath':
+                // Gentle breathing pattern - slow, centered waves
                 shaderEffectCode = `
-    float a = sin(uv.x * complexity * 3.0 + t);
-    float b = sin(uv.y * complexity * 4.0 + t * 1.3);
-    float c = sin((uv.x + uv.y) * complexity * 2.0 + t * 0.8);
-    float d = sin(length(uv * scale) * complexity * 5.0 - t * 2.0);
+    vec2 centered = uv * scale;
+    float breathe = sin(t * 0.5) * 0.5 + 0.5;
 
-    float pattern = (a + b + c + d) / 4.0;
-    vec3 col = mix(mix(color1, color2, pattern * 0.5 + 0.5), color3, sin(pattern * 3.14159 + t) * 0.5 + 0.5);
-                `;
-                break;
-
-            case 'waves':
-                shaderEffectCode = `
-    float dist = length(uv * scale);
-    float wave = sin(dist * complexity * 10.0 - t * speed * 3.0);
-    wave *= exp(-dist * distortion);
+    float dist = length(centered);
+    float wave = sin(dist * 2.0 - t * 0.3) * exp(-dist * 0.5);
+    wave *= breathe;
 
     float pattern = wave * 0.5 + 0.5;
-    vec3 col = mix(color1, mix(color2, color3, pattern), pattern);
-    col += vec3(wave) * glow * 2.0;
+    vec3 col = mix(color1, mix(color2, color3, breathe), pattern);
+    col *= 0.3 + breathe * 0.4;
                 `;
                 break;
 
-            case 'tunnel':
-                shaderEffectCode = `
-    float r = length(uv * scale);
-    float a = atan(uv.y, uv.x);
-
-    float tunnel = complexity / max(r, 0.1) + t * speed;
-    float spiral = a / 3.14159 * complexity * 5.0;
-
-    float pattern = sin(tunnel * 2.0) * sin(spiral * 2.0);
-    vec3 col = mix(color1, mix(color2, color3, pattern * 0.5 + 0.5), pattern * 0.5 + 0.5);
-    col *= smoothstep(2.0, 0.5, r);
-                `;
-                break;
-
-            case 'spiral':
-                shaderEffectCode = `
-    float angle = atan(uv.y, uv.x);
-    float radius = length(uv * scale);
-
-    float spiral = sin(radius * complexity * 10.0 - angle * float(symmetry) + t * speed * 2.0);
-    spiral += sin(radius * complexity * 15.0 + t * speed);
-
-    float pattern = spiral * 0.5 + 0.5;
-    vec3 col = mix(mix(color1, color2, pattern), color3, sin(angle * float(symmetry)) * 0.5 + 0.5);
-                `;
-                break;
-
-            case 'kaleidoscope':
-                shaderEffectCode = `
-    float angle = atan(uv.y, uv.x);
-    float radius = length(uv * scale);
-
-    angle = mod(angle, 6.28318 / float(symmetry)) * float(symmetry);
-    vec2 kaleido = vec2(cos(angle), sin(angle)) * radius;
-
-    float pattern = sin(kaleido.x * complexity * 5.0 + t * speed) *
-                    cos(kaleido.y * complexity * 5.0 - t * speed * 0.7);
-
-    vec3 col = mix(color1, color2, pattern * 0.5 + 0.5);
-    col = mix(col, color3, sin(radius * complexity * 3.0 + t) * 0.5 + 0.5);
-                `;
-                break;
-
-            case 'fractal':
-                shaderEffectCode = `
-    vec2 z = uv * scale * 2.0;
-    float pattern = 0.0;
-
-    for (int i = 0; i < 5; i++) {
-        z = vec2(z.x * z.x - z.y * z.y, 2.0 * z.x * z.y);
-        z += uv * complexity + vec2(sin(t * speed * 0.3), cos(t * speed * 0.2));
-        pattern += exp(-length(z));
-    }
-
-    pattern *= 0.2;
-    vec3 col = mix(color1, mix(color2, color3, pattern), pattern);
-                `;
-                break;
-
-            case 'aurora':
-                shaderEffectCode = `
-    float wave1 = sin(uv.x * complexity * 2.0 + t * speed + sin(uv.y * 3.0));
-    float wave2 = sin(uv.x * complexity * 3.0 - t * speed * 0.7 + cos(uv.y * 2.0));
-    float wave3 = sin((uv.x + uv.y) * complexity * 1.5 + t * speed * 0.5);
-
-    float pattern = (wave1 + wave2 + wave3) / 3.0;
-    pattern *= smoothstep(-1.0, 1.0, uv.y + distortion * sin(uv.x * 2.0 + t * speed));
-
-    vec3 col = mix(color1, color2, pattern * 0.5 + 0.5);
-    col = mix(col, color3, wave3 * 0.5 + 0.5);
-    col += vec3(glow) * exp(-abs(uv.y) * 2.0);
-                `;
-                break;
-
-            case 'nebula':
+            case 'flow':
+                // Serene flowing gradients
                 shaderEffectCode = `
     vec2 p = uv * scale;
-    float noise = 0.0;
-    float amp = 1.0;
+    float flow1 = sin(p.x * complexity + t * 0.2);
+    float flow2 = cos(p.y * complexity - t * 0.15);
 
-    for (int i = 0; i < 5; i++) {
-        noise += sin(p.x * complexity + t * speed * 0.5) *
-                 cos(p.y * complexity - t * speed * 0.3) * amp;
-        p = p * 2.0 + vec2(sin(t * speed * 0.1), cos(t * speed * 0.15));
-        amp *= 0.5;
-    }
+    float pattern = (flow1 + flow2) * 0.25 + 0.5;
+    pattern *= exp(-length(p) * distortion * 0.3);
 
-    float pattern = noise * 0.5 + 0.5;
     vec3 col = mix(color1, color2, pattern);
-    col = mix(col, color3, sin(pattern * 6.28318 + t * speed) * 0.5 + 0.5);
+    col = mix(col, color3, sin(t * 0.1 + pattern) * 0.5 + 0.5);
+                `;
+                break;
 
-    float stars = step(0.99, fract(sin(dot(floor(uv * 100.0), vec2(12.9898, 78.233))) * 43758.5453));
-    col += vec3(stars) * brightness;
+            case 'quiet':
+                // Minimal, quiet movement
+                shaderEffectCode = `
+    vec2 p = uv * scale;
+    float quiet = sin(t * 0.1) * 0.1;
+
+    float pattern = length(p + vec2(quiet, -quiet * 0.7));
+    pattern = sin(pattern * complexity) * 0.3 + 0.5;
+
+    vec3 col = mix(color1, color2, pattern);
+    col = mix(col, color3, sin(t * 0.05) * 0.2 + 0.3);
+                `;
+                break;
+
+            case 'ocean':
+                // Gentle ocean waves
+                shaderEffectCode = `
+    vec2 p = uv * scale;
+    float wave1 = sin(p.x * complexity * 2.0 + t * 0.3);
+    float wave2 = sin((p.x + p.y) * complexity + t * 0.2);
+
+    float pattern = (wave1 + wave2) * 0.25 + 0.5;
+    pattern *= smoothstep(1.5, 0.0, length(p));
+
+    vec3 col = mix(color1, color2, pattern);
+    col = mix(col, color3, wave1 * 0.3 + 0.5);
+                `;
+                break;
+
+            case 'dawn':
+                // Soft dawn light transitions
+                shaderEffectCode = `
+    vec2 p = uv * scale;
+    float dawn = sin(t * 0.15) * 0.5 + 0.5;
+
+    float gradient = (p.y + 1.0) * 0.5;
+    gradient = pow(gradient, 1.5);
+
+    float pattern = gradient * dawn;
+
+    vec3 col = mix(color1, color2, pattern);
+    col = mix(col, color3, dawn * 0.6);
+                `;
+                break;
+
+            case 'evening':
+                // Evening fade effect
+                shaderEffectCode = `
+    vec2 p = uv * scale;
+    float evening = cos(t * 0.12) * 0.5 + 0.5;
+
+    float gradient = 1.0 - (p.y + 1.0) * 0.5;
+    gradient = pow(gradient, 1.2);
+
+    float pattern = gradient * evening;
+
+    vec3 col = mix(color3, color2, pattern);
+    col = mix(col, color1, evening * 0.5);
+                `;
+                break;
+
+            case 'meditation':
+                // Centered radial calm
+                shaderEffectCode = `
+    vec2 p = uv * scale;
+    float dist = length(p);
+
+    float rings = sin(dist * complexity * 5.0 - t * 0.2) * 0.5 + 0.5;
+    rings *= exp(-dist * 0.8);
+
+    float pulse = sin(t * 0.3) * 0.3 + 0.7;
+
+    float pattern = rings * pulse;
+    vec3 col = mix(color1, color2, pattern);
+    col = mix(col, color3, rings);
+                `;
+                break;
+
+            case 'balance':
+                // Symmetrical, balanced patterns
+                shaderEffectCode = `
+    vec2 p = uv * scale;
+    float angle = atan(p.y, p.x);
+    float radius = length(p);
+
+    float symmetry = sin(angle * 4.0) * cos(radius * complexity - t * 0.2);
+    symmetry = symmetry * 0.5 + 0.5;
+
+    float pattern = symmetry * exp(-radius * 0.5);
+    vec3 col = mix(color1, color2, pattern);
+    col = mix(col, color3, symmetry * 0.7);
+                `;
+                break;
+
+            case 'clarity':
+                // Clean, clear patterns
+                shaderEffectCode = `
+    vec2 p = uv * scale;
+
+    float clear = abs(sin(p.x * complexity + t * 0.2));
+    clear *= abs(cos(p.y * complexity - t * 0.15));
+
+    float pattern = smoothstep(0.3, 0.7, clear);
+
+    vec3 col = mix(color1, color2, pattern);
+    col = mix(col, color3, sin(t * 0.1) * 0.3 + 0.5);
+                `;
+                break;
+
+            case 'peace':
+                // Very subtle, peaceful movement
+                shaderEffectCode = `
+    vec2 p = uv * scale;
+    float peace = sin(t * 0.08) * 0.15 + 0.85;
+
+    float soft = smoothstep(1.0, 0.0, length(p));
+    soft *= peace;
+
+    float pattern = soft * (sin(t * 0.05) * 0.1 + 0.9);
+
+    vec3 col = mix(color1, color2, pattern);
+    col = mix(col, color3, soft * 0.5);
+                `;
+                break;
+
+            case 'focus':
+                // Centered focus point
+                shaderEffectCode = `
+    vec2 p = uv * scale;
+    float dist = length(p);
+
+    float focus = exp(-dist * complexity);
+    focus *= sin(t * 0.15) * 0.2 + 0.8;
+
+    float pattern = focus;
+
+    vec3 col = mix(color1, color2, pattern);
+    col = mix(col, color3, focus * 0.6);
+                `;
+                break;
+
+            case 'tranquil':
+                // Soft ambient movement
+                shaderEffectCode = `
+    vec2 p = uv * scale;
+
+    float ambient = sin(p.x * complexity * 0.5 + t * 0.1);
+    ambient += cos(p.y * complexity * 0.7 - t * 0.08);
+    ambient = ambient * 0.25 + 0.5;
+
+    float fade = exp(-length(p) * 0.4);
+    float pattern = ambient * fade;
+
+    vec3 col = mix(color1, color2, pattern);
+    col = mix(col, color3, ambient);
                 `;
                 break;
         }
@@ -355,9 +401,7 @@ uniform vec3 color1;
 uniform vec3 color2;
 uniform vec3 color3;
 uniform float colorIntensity;
-uniform float colorShift;
 uniform float distortion;
-uniform int symmetry;
 uniform float glow;
 uniform float brightness;
 
@@ -367,19 +411,18 @@ void main() {
 
     ${shaderEffectCode}
 
-    // Apply color adjustments
+    // Apply subtle color adjustments
     col *= colorIntensity;
-    col = 0.5 + 0.5 * cos(colorShift + col.rgb * 3.14159);
 
-    // Apply glow
+    // Apply gentle glow
     float dist = length(uv);
-    col += vec3(glow * 0.5) / (dist + 0.1);
+    col += vec3(glow * 0.3) / (dist * 3.0 + 1.0);
 
     // Apply brightness
     col *= brightness;
 
-    // Clamp values
-    col = clamp(col, 0.0, 1.0);
+    // Clamp and ensure dark, therapeutic aesthetic
+    col = clamp(col, 0.0, 0.8);
 
     gl_FragColor = vec4(col, 1.0);
 }
@@ -472,10 +515,10 @@ void main() {
             this.fps = this.frameCount;
             this.frameCount = 0;
             this.lastFPSUpdate = now;
-            document.getElementById('fpsCounter').textContent = `FPS: ${this.fps}`;
+            document.getElementById('fpsCounter').textContent = this.fps;
         }
 
-        document.getElementById('timeCounter').textContent = `Time: ${this.currentTime.toFixed(2)}s`;
+        document.getElementById('timeCounter').textContent = this.currentTime.toFixed(2) + 's';
 
         // Clear and render
         this.gl.clearColor(0, 0, 0, 1);
@@ -495,12 +538,9 @@ void main() {
         this.setUniform('complexity', this.params.complexity);
         this.setUniform('scale', this.params.scale);
         this.setUniform('colorIntensity', this.params.colorIntensity);
-        this.setUniform('colorShift', this.params.colorShift);
         this.setUniform('distortion', this.params.distortion);
         this.setUniform('glow', this.params.glow);
         this.setUniform('brightness', this.params.brightness);
-
-        this.setUniformInt('symmetry', this.params.symmetry);
 
         this.setUniformVec3('color1', this.hexToRGB(this.params.color1));
         this.setUniformVec3('color2', this.hexToRGB(this.params.color2));
@@ -515,11 +555,6 @@ void main() {
     setUniform(name, value) {
         const location = this.gl.getUniformLocation(this.program, name);
         if (location) this.gl.uniform1f(location, value);
-    }
-
-    setUniformInt(name, value) {
-        const location = this.gl.getUniformLocation(this.program, name);
-        if (location) this.gl.uniform1i(location, value);
     }
 
     setUniformVec3(name, rgb) {

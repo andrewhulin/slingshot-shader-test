@@ -3,151 +3,118 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shader Studio - No-Code Shader Creator</title>
+    <title>Shader Studio</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Full-screen shader canvas as background -->
+    <!-- Full-screen shader canvas -->
     <canvas id="glCanvas"></canvas>
 
-    <!-- Floating control panel -->
-    <div class="control-panel" id="controlPanel">
-        <div class="panel-header">
-            <h1>🎨 Shader Studio</h1>
-            <button id="togglePanel" class="btn-icon" title="Collapse panel">−</button>
+    <!-- Right sidebar control panel -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="header-title">SHADER STUDIO</div>
         </div>
 
-        <div class="panel-content" id="panelContent">
-            <!-- Effect Type Selection -->
+        <div class="sidebar-content">
+            <!-- Preset Selection -->
             <section class="control-section">
-                <h3>Effect Type</h3>
-                <select id="effectType" class="select-large">
-                    <option value="plasma">Plasma</option>
-                    <option value="waves">Waves</option>
-                    <option value="tunnel">Tunnel</option>
-                    <option value="spiral">Spiral</option>
-                    <option value="kaleidoscope">Kaleidoscope</option>
-                    <option value="fractal">Fractal</option>
-                    <option value="aurora">Aurora</option>
-                    <option value="nebula">Nebula</option>
+                <label class="control-label">PRESET</label>
+                <select id="effectType" class="control-select">
+                    <option value="breath">Gentle Breath</option>
+                    <option value="flow">Serene Flow</option>
+                    <option value="quiet">Quiet Mind</option>
+                    <option value="ocean">Ocean Calm</option>
+                    <option value="dawn">Dawn Light</option>
+                    <option value="evening">Evening Fade</option>
+                    <option value="meditation">Meditation</option>
+                    <option value="balance">Balance</option>
+                    <option value="clarity">Clarity</option>
+                    <option value="peace">Peace</option>
+                    <option value="focus">Focus</option>
+                    <option value="tranquil">Tranquil</option>
                 </select>
             </section>
 
-            <!-- Animation Controls -->
+            <!-- Animation -->
             <section class="control-section">
-                <h3>Animation</h3>
-                <div class="control-group">
-                    <label>
-                        <span>Speed</span>
-                        <span class="value" id="speedValue">1.0</span>
-                    </label>
-                    <input type="range" id="speed" min="0" max="3" step="0.1" value="1">
+                <label class="control-label">ANIMATION</label>
+                <div class="control-row">
+                    <span class="control-sublabel">Speed</span>
+                    <span class="control-value" id="speedValue">1.0</span>
                 </div>
-                <div class="control-group">
-                    <label>
-                        <span>Complexity</span>
-                        <span class="value" id="complexityValue">1.0</span>
-                    </label>
-                    <input type="range" id="complexity" min="0.1" max="3" step="0.1" value="1">
+                <input type="range" id="speed" class="control-slider" min="0" max="3" step="0.1" value="1">
+
+                <div class="control-row">
+                    <span class="control-sublabel">Intensity</span>
+                    <span class="control-value" id="complexityValue">1.0</span>
                 </div>
-                <div class="control-group">
-                    <label>
-                        <span>Scale</span>
-                        <span class="value" id="scaleValue">1.0</span>
-                    </label>
-                    <input type="range" id="scale" min="0.1" max="5" step="0.1" value="1">
+                <input type="range" id="complexity" class="control-slider" min="0.1" max="3" step="0.1" value="1">
+
+                <div class="control-row">
+                    <span class="control-sublabel">Scale</span>
+                    <span class="control-value" id="scaleValue">1.0</span>
                 </div>
+                <input type="range" id="scale" class="control-slider" min="0.1" max="5" step="0.1" value="1">
             </section>
 
-            <!-- Color Controls -->
+            <!-- Colors -->
             <section class="control-section">
-                <h3>Colors</h3>
-                <div class="control-group">
-                    <label>
-                        <span>Color 1</span>
-                    </label>
-                    <input type="color" id="color1" value="#ff006e">
+                <label class="control-label">COLORS</label>
+                <div class="color-grid">
+                    <input type="color" id="color1" class="color-input" value="#1a1a2e">
+                    <input type="color" id="color2" class="color-input" value="#16213e">
+                    <input type="color" id="color3" class="color-input" value="#0f3460">
                 </div>
-                <div class="control-group">
-                    <label>
-                        <span>Color 2</span>
-                    </label>
-                    <input type="color" id="color2" value="#8338ec">
+
+                <div class="control-row">
+                    <span class="control-sublabel">Intensity</span>
+                    <span class="control-value" id="colorIntensityValue">1.0</span>
                 </div>
-                <div class="control-group">
-                    <label>
-                        <span>Color 3</span>
-                    </label>
-                    <input type="color" id="color3" value="#3a86ff">
-                </div>
-                <div class="control-group">
-                    <label>
-                        <span>Color Intensity</span>
-                        <span class="value" id="colorIntensityValue">1.0</span>
-                    </label>
-                    <input type="range" id="colorIntensity" min="0" max="2" step="0.1" value="1">
-                </div>
-                <div class="control-group">
-                    <label>
-                        <span>Color Shift</span>
-                        <span class="value" id="colorShiftValue">0.0</span>
-                    </label>
-                    <input type="range" id="colorShift" min="-3.14" max="3.14" step="0.1" value="0">
-                </div>
+                <input type="range" id="colorIntensity" class="control-slider" min="0" max="2" step="0.1" value="1">
             </section>
 
-            <!-- Pattern Controls -->
+            <!-- Pattern -->
             <section class="control-section">
-                <h3>Pattern</h3>
-                <div class="control-group">
-                    <label>
-                        <span>Distortion</span>
-                        <span class="value" id="distortionValue">0.5</span>
-                    </label>
-                    <input type="range" id="distortion" min="0" max="2" step="0.1" value="0.5">
+                <label class="control-label">PATTERN</label>
+                <div class="control-row">
+                    <span class="control-sublabel">Distortion</span>
+                    <span class="control-value" id="distortionValue">0.5</span>
                 </div>
-                <div class="control-group">
-                    <label>
-                        <span>Symmetry</span>
-                        <span class="value" id="symmetryValue">1</span>
-                    </label>
-                    <input type="range" id="symmetry" min="1" max="12" step="1" value="1">
+                <input type="range" id="distortion" class="control-slider" min="0" max="2" step="0.1" value="0.5">
+
+                <div class="control-row">
+                    <span class="control-sublabel">Glow</span>
+                    <span class="control-value" id="glowValue">0.2</span>
                 </div>
-                <div class="control-group">
-                    <label>
-                        <span>Glow</span>
-                        <span class="value" id="glowValue">0.2</span>
-                    </label>
-                    <input type="range" id="glow" min="0" max="1" step="0.05" value="0.2">
+                <input type="range" id="glow" class="control-slider" min="0" max="1" step="0.05" value="0.2">
+
+                <div class="control-row">
+                    <span class="control-sublabel">Brightness</span>
+                    <span class="control-value" id="brightnessValue">1.0</span>
                 </div>
-                <div class="control-group">
-                    <label>
-                        <span>Brightness</span>
-                        <span class="value" id="brightnessValue">1.0</span>
-                    </label>
-                    <input type="range" id="brightness" min="0" max="2" step="0.1" value="1">
-                </div>
+                <input type="range" id="brightness" class="control-slider" min="0" max="2" step="0.1" value="1">
             </section>
 
-            <!-- Action Buttons -->
+            <!-- Actions -->
             <section class="control-section">
-                <div class="button-group">
-                    <button id="randomizeBtn" class="btn btn-primary">🎲 Randomize</button>
-                    <button id="resetBtn" class="btn">🔄 Reset</button>
-                </div>
-                <div class="button-group">
-                    <button id="playBtn" class="btn btn-success">
-                        <span id="playIcon">⏸</span> <span id="playText">Pause</span>
-                    </button>
-                    <button id="exportBtn" class="btn btn-export">💾 Export .frag</button>
-                </div>
+                <button id="randomizeBtn" class="btn btn-secondary">RANDOMIZE</button>
+                <button id="resetBtn" class="btn btn-secondary">RESET TIME</button>
+                <button id="playBtn" class="btn btn-primary">
+                    <span id="playText">PAUSE</span>
+                </button>
+                <button id="exportBtn" class="btn btn-secondary">EXPORT .FRAG</button>
             </section>
 
-            <!-- Info Display -->
-            <section class="control-section info-section">
-                <div class="info-grid">
-                    <span id="fpsCounter">FPS: 0</span>
-                    <span id="timeCounter">Time: 0.00s</span>
+            <!-- Info -->
+            <section class="control-section sidebar-footer">
+                <div class="info-row">
+                    <span class="info-label">FPS</span>
+                    <span class="info-value" id="fpsCounter">0</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">TIME</span>
+                    <span class="info-value" id="timeCounter">0.00s</span>
                 </div>
             </section>
         </div>
