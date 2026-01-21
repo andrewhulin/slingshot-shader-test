@@ -1,5 +1,4 @@
-// Shader Studio - Therapeutic Background Generator for Ash AI Therapy App
-// Brand-aligned warm & earthy shader presets
+// Shader Studio - Water-Based Thinking Shaders for Ash AI Therapy App
 
 class ShaderStudio {
     constructor() {
@@ -13,21 +12,47 @@ class ShaderStudio {
         this.lastFPSUpdate = Date.now();
         this.fps = 0;
 
-        // Shader parameters - Brand-aligned defaults
+        // Stepped parameters
         this.params = {
-            effectType: 'warmglow',
-            speed: 0.6,
-            complexity: 1.2,
-            scale: 1.0,
-            color1: '#E67E50',  // Warm coral/orange
-            color2: '#F5A962',  // Golden orange
-            color3: '#7D8F69',  // Sage green
-            colorIntensity: 1.2,
-            colorShift: 0.0,
-            distortion: 0.5,
-            symmetry: 1,
-            glow: 0.3,
-            brightness: 1.1
+            preset: 'ripples',
+            flow: 0,          // 0-3: Still, Gentle, Moderate, Active
+            depth: 0,         // 0-2: Shallow, Medium, Deep
+            movement: 0,      // 0-2: Calm, Flowing, Dynamic
+            harmony: 'ash'    // Color harmony preset
+        };
+
+        // Color harmonies - curated palettes that always look good
+        this.harmonies = {
+            ash: {
+                color1: [0.902, 0.494, 0.314], // #E67E50
+                color2: [0.490, 0.561, 0.412], // #7D8F69
+                color3: [0.961, 0.663, 0.384]  // #F5A962
+            },
+            ocean: {
+                color1: [0.290, 0.565, 0.643], // #4A90A4
+                color2: [0.353, 0.694, 0.733], // #5AB1BB
+                color3: [0.176, 0.373, 0.427]  // #2D5F6D
+            },
+            forest: {
+                color1: [0.420, 0.561, 0.443], // #6B8F71
+                color2: [0.561, 0.659, 0.533], // #8FA888
+                color3: [0.290, 0.420, 0.322]  // #4A6B52
+            },
+            sunset: {
+                color1: [0.910, 0.553, 0.404], // #E88D67
+                color2: [0.608, 0.420, 0.620], // #9B6B9E
+                color3: [0.957, 0.635, 0.380]  // #F4A261
+            },
+            moonlight: {
+                color1: [0.482, 0.561, 0.639], // #7B8FA3
+                color2: [0.659, 0.710, 0.780], // #A8B5C7
+                color3: [0.306, 0.365, 0.424]  // #4E5D6C
+            },
+            earth: {
+                color1: [0.608, 0.494, 0.435], // #9B7E6F
+                color2: [0.420, 0.561, 0.639], // #6B8FA3
+                color3: [0.769, 0.647, 0.482]  // #C4A57B
+            }
         };
 
         this.init();
@@ -61,54 +86,59 @@ class ShaderStudio {
     }
 
     setupUI() {
-        // Effect type
-        this.setupControl('effectType', (value) => {
-            this.params.effectType = value;
-            this.generateAndCompileShader();
+        // Preset buttons
+        document.querySelectorAll('.preset-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                this.params.preset = btn.dataset.preset;
+                this.generateAndCompileShader();
+            });
         });
 
-        // Sliders
-        this.setupSlider('speed', 'speedValue', (value) => this.params.speed = value);
-        this.setupSlider('complexity', 'complexityValue', (value) => this.params.complexity = value);
-        this.setupSlider('scale', 'scaleValue', (value) => this.params.scale = value);
-        this.setupSlider('colorIntensity', 'colorIntensityValue', (value) => this.params.colorIntensity = value);
-        this.setupSlider('distortion', 'distortionValue', (value) => this.params.distortion = value);
-        this.setupSlider('glow', 'glowValue', (value) => this.params.glow = value);
-        this.setupSlider('brightness', 'brightnessValue', (value) => this.params.brightness = value);
+        // Flow step buttons
+        const flowBtns = document.querySelectorAll('.control-section')[1].querySelectorAll('.step-btn');
+        flowBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                flowBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                this.params.flow = parseInt(btn.dataset.value);
+            });
+        });
 
-        // Color pickers
-        this.setupColorPicker('color1');
-        this.setupColorPicker('color2');
-        this.setupColorPicker('color3');
+        // Depth step buttons
+        const depthBtns = document.querySelectorAll('.control-section')[2].querySelectorAll('.step-btn');
+        depthBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                depthBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                this.params.depth = parseInt(btn.dataset.value);
+            });
+        });
 
-        // Buttons
+        // Movement step buttons
+        const movementBtns = document.querySelectorAll('.control-section')[3].querySelectorAll('.step-btn');
+        movementBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                movementBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                this.params.movement = parseInt(btn.dataset.value);
+            });
+        });
+
+        // Harmony buttons
+        document.querySelectorAll('.harmony-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.harmony-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                this.params.harmony = btn.dataset.harmony;
+            });
+        });
+
+        // Action buttons
         document.getElementById('playBtn').addEventListener('click', () => this.togglePlay());
         document.getElementById('resetBtn').addEventListener('click', () => this.reset());
-        document.getElementById('randomizeBtn').addEventListener('click', () => this.randomize());
         document.getElementById('exportBtn').addEventListener('click', () => this.export());
-    }
-
-    setupControl(id, callback) {
-        const element = document.getElementById(id);
-        element.addEventListener('change', (e) => callback(e.target.value));
-    }
-
-    setupSlider(id, valueId, callback) {
-        const slider = document.getElementById(id);
-        const valueDisplay = document.getElementById(valueId);
-
-        slider.addEventListener('input', (e) => {
-            const value = parseFloat(e.target.value);
-            callback(value);
-            valueDisplay.textContent = value.toFixed(value >= 10 ? 0 : 1);
-        });
-    }
-
-    setupColorPicker(id) {
-        const picker = document.getElementById(id);
-        picker.addEventListener('input', (e) => {
-            this.params[id] = e.target.value;
-        });
     }
 
     togglePlay() {
@@ -128,283 +158,156 @@ class ShaderStudio {
         this.startTime = Date.now();
     }
 
-    randomize() {
-        const effects = ['warmglow', 'earthrise', 'sage', 'sunset', 'terracotta', 'goldenhr', 'forest', 'amber', 'zenstone', 'clay', 'meadow', 'warmth'];
-        this.params.effectType = effects[Math.floor(Math.random() * effects.length)];
-        document.getElementById('effectType').value = this.params.effectType;
-
-        this.params.speed = 0.3 + Math.random() * 1.2;
-        this.params.complexity = 0.8 + Math.random() * 1.5;
-        this.params.scale = 0.7 + Math.random() * 1.8;
-        this.params.colorIntensity = 1.0 + Math.random() * 0.8;
-        this.params.distortion = 0.2 + Math.random() * 1.0;
-        this.params.glow = 0.2 + Math.random() * 0.5;
-        this.params.brightness = 0.9 + Math.random() * 0.8;
-
-        // Brand-aligned color randomization
-        this.params.color1 = this.randomBrandColor();
-        this.params.color2 = this.randomBrandColor();
-        this.params.color3 = this.randomBrandColor();
-
-        this.updateUI();
-        this.generateAndCompileShader();
-    }
-
-    randomBrandColor() {
-        const brandPalette = [
-            // Warm oranges & corals
-            '#E67E50', '#F5A962', '#FF8C42', '#E8956C', '#F4A261', '#ED9455',
-            // Sage & olive greens
-            '#7D8F69', '#6B7F5C', '#8B9D6F', '#73856A', '#8A9B7A', '#6F8062',
-            // Earth tones
-            '#B89176', '#A17F6B', '#C4A578', '#9B8169', '#D4A574',
-            // Creams & warm neutrals
-            '#EDE8DC', '#F5F1E8', '#E8DCC8', '#DDD5C7'
-        ];
-        return brandPalette[Math.floor(Math.random() * brandPalette.length)];
-    }
-
-    updateUI() {
-        document.getElementById('speed').value = this.params.speed;
-        document.getElementById('speedValue').textContent = this.params.speed.toFixed(1);
-
-        document.getElementById('complexity').value = this.params.complexity;
-        document.getElementById('complexityValue').textContent = this.params.complexity.toFixed(1);
-
-        document.getElementById('scale').value = this.params.scale;
-        document.getElementById('scaleValue').textContent = this.params.scale.toFixed(1);
-
-        document.getElementById('colorIntensity').value = this.params.colorIntensity;
-        document.getElementById('colorIntensityValue').textContent = this.params.colorIntensity.toFixed(1);
-
-        document.getElementById('distortion').value = this.params.distortion;
-        document.getElementById('distortionValue').textContent = this.params.distortion.toFixed(1);
-
-        document.getElementById('glow').value = this.params.glow;
-        document.getElementById('glowValue').textContent = this.params.glow.toFixed(2);
-
-        document.getElementById('brightness').value = this.params.brightness;
-        document.getElementById('brightnessValue').textContent = this.params.brightness.toFixed(1);
-
-        document.getElementById('color1').value = this.params.color1;
-        document.getElementById('color2').value = this.params.color2;
-        document.getElementById('color3').value = this.params.color3;
-    }
-
-    hexToRGB(hex) {
-        const r = parseInt(hex.slice(1, 3), 16) / 255;
-        const g = parseInt(hex.slice(3, 5), 16) / 255;
-        const b = parseInt(hex.slice(5, 7), 16) / 255;
-        return [r, g, b];
-    }
-
     generateShaderCode() {
         const p = this.params;
+
+        // Map stepped values to shader parameters
+        const speed = [0.2, 0.5, 1.0, 1.8][p.flow];
+        const complexity = [0.8, 1.2, 2.0][p.depth];
+        const intensity = [0.6, 1.0, 1.5][p.movement];
+
         let shaderEffectCode = '';
 
-        switch (p.effectType) {
-            case 'warmglow':
-                // Warm radial glow emanating from center
+        switch (p.preset) {
+            case 'ripples':
+                // Concentric ripples - thoughts spreading outward
                 shaderEffectCode = `
-    vec2 p = uv * scale;
+    vec2 p = uv;
     float dist = length(p);
 
-    float glow1 = exp(-dist * complexity * 0.8);
-    float glow2 = exp(-dist * complexity * 1.5);
-    float pulse = sin(t * 0.8) * 0.3 + 0.7;
+    // Multiple ripple sources for depth
+    float ripple1 = sin(dist * 12.0 * complexity - t * speed * 2.0) * 0.5 + 0.5;
+    float ripple2 = sin(dist * 8.0 * complexity - t * speed * 1.5 + 1.0) * 0.5 + 0.5;
+    float ripple3 = sin(dist * 15.0 * complexity - t * speed * 2.5 + 2.0) * 0.5 + 0.5;
 
-    float pattern = (glow1 * 0.7 + glow2 * 0.3) * pulse;
-    pattern += sin(dist * 3.0 - t * 0.5) * 0.15 * exp(-dist * 0.5);
+    // Exponential falloff for depth
+    float falloff = exp(-dist * (2.0 - intensity));
 
+    float pattern = (ripple1 * 0.5 + ripple2 * 0.3 + ripple3 * 0.2) * falloff;
+
+    // Color based on ripple intensity
     vec3 col = mix(color1, color2, pattern);
-    col = mix(col, color3, sin(t * 0.3 + dist * 2.0) * 0.4 + 0.5);
+    col = mix(col, color3, ripple1 * falloff);
                 `;
                 break;
 
-            case 'earthrise':
-                // Rising gradient with organic waves
+            case 'current':
+                // Flowing current - directional thinking
                 shaderEffectCode = `
-    vec2 p = uv * scale;
-    float rise = (p.y + 1.0) * 0.5;
+    vec2 p = uv;
 
-    float wave = sin(p.x * complexity * 3.0 + t * 0.4) * 0.15;
-    wave += sin(p.x * complexity * 1.5 - t * 0.3) * 0.1;
+    // Flowing horizontal current with vertical variation
+    float current = sin(p.x * 4.0 * complexity - t * speed * 1.5);
+    current += sin((p.x - p.y * 0.5) * 6.0 * complexity - t * speed * 2.0) * 0.5;
+    current += cos(p.x * 3.0 * complexity + p.y * 2.0 - t * speed) * 0.3;
 
-    float pattern = pow(rise + wave, 1.3);
-    pattern *= sin(t * 0.2) * 0.2 + 0.9;
+    // Vertical gradient for depth
+    float depthGrad = (p.y + 1.0) * 0.5;
+    depthGrad = pow(depthGrad, 1.5 - intensity * 0.5);
+
+    float pattern = (current * 0.4 + 0.5) * depthGrad;
+
+    // Flowing color shifts
+    vec3 col = mix(color2, color1, pattern);
+    col = mix(col, color3, sin(pattern * 3.14159 + t * speed * 0.5) * 0.5 + 0.5);
+                `;
+                break;
+
+            case 'deep':
+                // Deep layered thinking - stratified water layers
+                shaderEffectCode = `
+    vec2 p = uv;
+    float dist = length(p);
+
+    // Layered depth with different speeds
+    float layer1 = sin(p.y * 5.0 * complexity + t * speed * 0.3);
+    float layer2 = sin(p.y * 8.0 * complexity + t * speed * 0.5 + 1.0);
+    float layer3 = sin(p.y * 12.0 * complexity + t * speed * 0.7 + 2.0);
+
+    // Add horizontal variation
+    float variation = sin(p.x * 3.0 + t * speed * 0.2) * 0.3;
+
+    // Combine layers with depth
+    float pattern = (layer1 * 0.5 + layer2 * 0.3 + layer3 * 0.2 + variation);
+    pattern = pattern * 0.5 + 0.5;
+
+    // Depth darkening
+    pattern *= 1.0 - dist * (1.5 - intensity * 0.5);
 
     vec3 col = mix(color3, color2, pattern);
-    col = mix(col, color1, pattern * 0.7);
+    col = mix(col, color1, layer1 * 0.3 + 0.4);
                 `;
                 break;
 
-            case 'sage':
-                // Organic flowing sage-inspired patterns
+            case 'surface':
+                // Surface patterns - scattered light thoughts
                 shaderEffectCode = `
-    vec2 p = uv * scale;
+    vec2 p = uv;
 
-    float flow1 = sin(p.x * complexity + t * 0.3 + sin(p.y * 2.0));
-    float flow2 = cos(p.y * complexity * 0.8 - t * 0.25 + cos(p.x * 1.5));
+    // Scattered surface reflections
+    float scatter1 = sin(p.x * 10.0 * complexity + t * speed * 2.0);
+    float scatter2 = sin(p.y * 8.0 * complexity - t * speed * 1.5);
+    float scatter3 = sin((p.x + p.y) * 6.0 * complexity + t * speed * 1.8);
 
-    float pattern = (flow1 + flow2) * 0.35 + 0.5;
-    pattern *= exp(-length(p) * distortion * 0.2);
+    // Combine with interference
+    float pattern = scatter1 * scatter2 * 0.5 + scatter3 * 0.3 + 0.5;
+    pattern *= 1.0 + sin(t * speed * 0.5) * intensity * 0.3;
 
-    float accent = sin(length(p) * 4.0 - t * 0.4) * 0.2 + 0.8;
-
-    vec3 col = mix(color3, mix(color2, color1, pattern * 0.6), pattern);
-    col *= accent;
-                `;
-                break;
-
-            case 'sunset':
-                // Warm sunset gradient with soft movement
-                shaderEffectCode = `
-    vec2 p = uv * scale;
-    float gradient = 1.0 - (p.y + 1.0) * 0.5;
-    gradient = pow(gradient, 1.2);
-
-    float drift = sin(t * 0.2 + p.x * 2.0) * 0.15;
-    float pattern = gradient + drift;
-
-    float shimmer = sin(p.x * complexity * 5.0 + t * 0.5) * 0.1;
+    // Shimmer effect
+    float shimmer = sin(p.x * 20.0 + p.y * 15.0 + t * speed * 3.0) * 0.1;
     pattern += shimmer;
 
-    vec3 col = mix(color2, color1, pattern * 0.8);
-    col = mix(col, color3, (1.0 - pattern) * 0.4);
+    vec3 col = mix(color1, color3, pattern * 0.8);
+    col = mix(col, color2, scatter1 * 0.4 + 0.5);
                 `;
                 break;
 
-            case 'terracotta':
-                // Earthy terracotta waves
+            case 'tide':
+                // Rhythmic tide - cyclical thinking
                 shaderEffectCode = `
-    vec2 p = uv * scale;
+    vec2 p = uv;
 
-    float wave1 = sin(p.y * complexity * 2.0 + t * 0.35);
-    float wave2 = cos(p.x * complexity * 1.5 - t * 0.4);
+    // Rhythmic tidal movement
+    float tide = sin(t * speed * 0.8) * intensity * 0.5;
 
-    float pattern = (wave1 * wave2) * 0.4 + 0.5;
-    pattern *= smoothstep(1.8, 0.2, length(p));
+    // Horizontal waves with tide influence
+    float wave1 = sin(p.x * 6.0 * complexity + t * speed * 1.2 + tide);
+    float wave2 = sin(p.x * 4.0 * complexity - t * speed * 0.8 + tide * 1.5);
 
-    float layer = sin(p.x * 3.0 + p.y * 2.0 + t * 0.25) * 0.2 + 0.8;
+    // Vertical gradient modified by tide
+    float gradient = (p.y + 1.0 + tide * 0.3) * 0.5;
 
-    vec3 col = mix(color1, color2, pattern);
-    col = mix(col, color3, wave1 * 0.3 + 0.4);
-    col *= layer;
+    float pattern = (wave1 * 0.6 + wave2 * 0.4) * 0.5 + 0.5;
+    pattern *= gradient;
+
+    // Tidal color shift
+    vec3 col = mix(color2, color1, pattern);
+    col = mix(col, color3, abs(sin(t * speed * 0.4)) * 0.6 + 0.2);
                 `;
                 break;
 
-            case 'goldenhr':
-                // Golden hour warm diffusion
+            case 'reflect':
+                // Mirror reflection - introspective thinking
                 shaderEffectCode = `
-    vec2 p = uv * scale;
+    vec2 p = uv;
+
+    // Symmetrical reflection from center
     float dist = length(p);
+    float angle = atan(p.y, p.x);
 
-    float rays = sin(atan(p.y, p.x) * 8.0 + t * 0.3) * 0.2 + 0.8;
-    float diffuse = exp(-dist * complexity * 0.6);
+    // Mirror patterns
+    float reflect1 = sin(dist * 10.0 * complexity - t * speed) * cos(angle * 4.0);
+    float reflect2 = cos(dist * 8.0 * complexity + t * speed * 0.7) * sin(angle * 6.0);
 
-    float pattern = diffuse * rays;
-    pattern += sin(dist * 4.0 - t * 0.5) * 0.15 * diffuse;
+    // Combine with radial gradient
+    float radial = exp(-dist * (2.0 - intensity * 0.5));
 
-    vec3 col = mix(color2, color1, pattern * 0.9);
-    col = mix(col, color3, (1.0 - diffuse) * 0.5);
-                `;
-                break;
+    float pattern = (reflect1 * 0.6 + reflect2 * 0.4) * 0.5 + 0.5;
+    pattern *= radial;
 
-            case 'forest':
-                // Forest dappled light pattern
-                shaderEffectCode = `
-    vec2 p = uv * scale;
-
-    float dapple = sin(p.x * complexity * 4.0 + sin(p.y * 3.0 + t * 0.2)) * 0.5 + 0.5;
-    dapple *= cos(p.y * complexity * 3.0 + cos(p.x * 2.0 - t * 0.15)) * 0.5 + 0.5;
-
-    float depth = exp(-length(p) * 0.3);
-    float pattern = dapple * depth * 0.8 + 0.2;
-
-    vec3 col = mix(color3, color2, pattern);
-    col = mix(col, color1, dapple * 0.4);
-                `;
-                break;
-
-            case 'amber':
-                // Amber waves of warmth
-                shaderEffectCode = `
-    vec2 p = uv * scale;
-
-    float wave = sin(p.x * complexity * 2.5 + t * 0.4) * cos(p.y * complexity * 1.8 - t * 0.3);
-    wave = wave * 0.4 + 0.5;
-
-    float flow = sin(length(p) * 3.0 - t * 0.35) * 0.2 + 0.8;
-    float pattern = wave * flow;
-
+    // Reflective color mixing
     vec3 col = mix(color1, color2, pattern);
-    col = mix(col, color3, sin(wave * 6.28 + t * 0.3) * 0.3 + 0.5);
-                `;
-                break;
-
-            case 'zenstone':
-                // Zen stone ripples
-                shaderEffectCode = `
-    vec2 p = uv * scale;
-    float dist = length(p);
-
-    float ripples = sin(dist * complexity * 6.0 - t * 0.4) * 0.5 + 0.5;
-    ripples *= exp(-dist * 0.6);
-
-    float pulse = sin(t * 0.35) * 0.25 + 0.75;
-    float pattern = ripples * pulse;
-
-    vec3 col = mix(color3, color2, pattern);
-    col = mix(col, color1, ripples * 0.5);
-                `;
-                break;
-
-            case 'clay':
-                // Clay and earth texture
-                shaderEffectCode = `
-    vec2 p = uv * scale;
-
-    float texture1 = sin(p.x * complexity * 6.0 + t * 0.2) * 0.5 + 0.5;
-    float texture2 = cos(p.y * complexity * 5.0 - t * 0.15) * 0.5 + 0.5;
-
-    float pattern = (texture1 * texture2) * 0.7 + 0.3;
-    pattern *= smoothstep(2.0, 0.3, length(p));
-
-    vec3 col = mix(color1, color2, pattern);
-    col = mix(col, color3, texture1 * 0.4 + 0.3);
-                `;
-                break;
-
-            case 'meadow':
-                // Meadow breeze movement
-                shaderEffectCode = `
-    vec2 p = uv * scale;
-
-    float breeze1 = sin(p.x * complexity * 2.0 + t * 0.3 + sin(p.y * 3.0));
-    float breeze2 = cos(p.y * complexity * 1.5 - t * 0.25 + cos(p.x * 2.5));
-
-    float pattern = (breeze1 + breeze2) * 0.35 + 0.5;
-    float fade = smoothstep(2.0, 0.0, length(p));
-
-    vec3 col = mix(color3, color2, pattern * fade);
-    col = mix(col, color1, breeze1 * 0.3 + 0.4);
-                `;
-                break;
-
-            case 'warmth':
-                // Inner warmth radiating outward
-                shaderEffectCode = `
-    vec2 p = uv * scale;
-    float dist = length(p);
-
-    float warmth = exp(-dist * complexity);
-    float pulse = sin(t * 0.4) * 0.3 + 0.7;
-
-    float rings = sin(dist * 5.0 - t * 0.3) * 0.15;
-    float pattern = warmth * pulse + rings;
-
-    vec3 col = mix(color1, color2, pattern * 0.8);
-    col = mix(col, color3, (1.0 - warmth) * 0.6);
+    col = mix(col, color3, reflect1 * radial * 0.5 + 0.5);
                 `;
                 break;
         }
@@ -414,35 +317,27 @@ precision mediump float;
 
 uniform float iTime;
 uniform vec2 iResolution;
-uniform float speed;
-uniform float complexity;
-uniform float scale;
 uniform vec3 color1;
 uniform vec3 color2;
 uniform vec3 color3;
-uniform float colorIntensity;
-uniform float distortion;
-uniform float glow;
-uniform float brightness;
 
 void main() {
     vec2 uv = (gl_FragCoord.xy * 2.0 - iResolution) / iResolution.y;
-    float t = iTime * speed;
+    float t = iTime;
+
+    // Parameters from stepped controls
+    float speed = ${speed.toFixed(2)};
+    float complexity = ${complexity.toFixed(2)};
+    float intensity = ${intensity.toFixed(2)};
 
     ${shaderEffectCode}
 
-    // Apply color saturation
-    col *= colorIntensity;
-
-    // Apply glow
+    // Subtle overall glow
     float dist = length(uv);
-    col += vec3(glow * 0.4) / (dist * 2.5 + 1.0);
+    col += vec3(0.15) / (dist * 3.0 + 1.0);
 
-    // Apply brightness
-    col *= brightness;
-
-    // Clamp to prevent too much brightness while keeping prominence
-    col = clamp(col, 0.0, 1.3);
+    // Clamp and enhance
+    col = clamp(col, 0.0, 1.2);
 
     gl_FragColor = vec4(col, 1.0);
 }
@@ -553,28 +448,16 @@ void main() {
         if (timeLocation) this.gl.uniform1f(timeLocation, this.currentTime);
         if (resolutionLocation) this.gl.uniform2f(resolutionLocation, this.canvas.width, this.canvas.height);
 
-        // Set parameter uniforms
-        this.setUniform('speed', this.params.speed);
-        this.setUniform('complexity', this.params.complexity);
-        this.setUniform('scale', this.params.scale);
-        this.setUniform('colorIntensity', this.params.colorIntensity);
-        this.setUniform('distortion', this.params.distortion);
-        this.setUniform('glow', this.params.glow);
-        this.setUniform('brightness', this.params.brightness);
-
-        this.setUniformVec3('color1', this.hexToRGB(this.params.color1));
-        this.setUniformVec3('color2', this.hexToRGB(this.params.color2));
-        this.setUniformVec3('color3', this.hexToRGB(this.params.color3));
+        // Set color harmony
+        const harmony = this.harmonies[this.params.harmony];
+        this.setUniformVec3('color1', harmony.color1);
+        this.setUniformVec3('color2', harmony.color2);
+        this.setUniformVec3('color3', harmony.color3);
 
         // Draw
         this.gl.drawArrays(this.gl.TRIANGLE_STRIP, 0, 4);
 
         requestAnimationFrame(() => this.render());
-    }
-
-    setUniform(name, value) {
-        const location = this.gl.getUniformLocation(this.program, name);
-        if (location) this.gl.uniform1f(location, value);
     }
 
     setUniformVec3(name, rgb) {
@@ -589,7 +472,7 @@ void main() {
 
         const a = document.createElement('a');
         a.href = url;
-        a.download = `shader_${this.params.effectType}_${Date.now()}.frag`;
+        a.download = `shader_${this.params.preset}_${Date.now()}.frag`;
         document.body.appendChild(a);
         a.click();
         document.body.removeChild(a);

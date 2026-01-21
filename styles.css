@@ -27,7 +27,7 @@ body {
     position: fixed;
     top: 0;
     right: 0;
-    width: 320px;
+    width: 340px;
     height: 100vh;
     background: rgba(0, 0, 0, 0.92);
     border-left: 1px solid rgba(255, 255, 255, 0.1);
@@ -37,7 +37,7 @@ body {
 }
 
 .sidebar-header {
-    padding: 24px 20px;
+    padding: 24px 20px 20px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
@@ -46,6 +46,13 @@ body {
     letter-spacing: 2px;
     color: rgba(255, 255, 255, 0.5);
     font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.header-subtitle {
+    font-size: 10px;
+    letter-spacing: 1px;
+    color: rgba(255, 255, 255, 0.3);
 }
 
 .sidebar-content {
@@ -73,128 +80,132 @@ body {
     margin-bottom: 4px;
 }
 
-.control-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 12px;
-    margin-bottom: 4px;
-}
-
-.control-sublabel {
-    font-size: 11px;
-    color: rgba(255, 255, 255, 0.6);
-    letter-spacing: 0.5px;
-}
-
-.control-value {
-    font-size: 11px;
-    color: rgba(255, 255, 255, 0.9);
-    font-family: 'Monaco', monospace;
-    min-width: 40px;
-    text-align: right;
-}
-
-/* Select dropdown */
-.control-select {
-    width: 100%;
-    padding: 10px 12px;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    color: rgba(255, 255, 255, 0.9);
-    font-size: 12px;
-    font-family: 'Monaco', 'Courier New', monospace;
-    cursor: pointer;
-    transition: all 0.2s ease;
-}
-
-.control-select:hover {
-    background: rgba(255, 255, 255, 0.05);
-    border-color: rgba(255, 255, 255, 0.2);
-}
-
-.control-select:focus {
-    outline: none;
-    border-color: rgba(100, 180, 255, 0.5);
-    background: rgba(255, 255, 255, 0.05);
-}
-
-.control-select option {
-    background: #000;
-    color: #fff;
-}
-
-/* Sliders */
-.control-slider {
-    width: 100%;
-    height: 2px;
-    background: rgba(255, 255, 255, 0.1);
-    outline: none;
-    -webkit-appearance: none;
-    cursor: pointer;
-}
-
-.control-slider::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 12px;
-    height: 12px;
-    background: rgba(255, 255, 255, 0.9);
-    border-radius: 0;
-    cursor: pointer;
-    transition: all 0.2s ease;
-}
-
-.control-slider::-webkit-slider-thumb:hover {
-    background: rgba(100, 180, 255, 0.9);
-    transform: scale(1.2);
-}
-
-.control-slider::-moz-range-thumb {
-    width: 12px;
-    height: 12px;
-    background: rgba(255, 255, 255, 0.9);
-    border: none;
-    border-radius: 0;
-    cursor: pointer;
-    transition: all 0.2s ease;
-}
-
-.control-slider::-moz-range-thumb:hover {
-    background: rgba(100, 180, 255, 0.9);
-    transform: scale(1.2);
-}
-
-/* Color inputs */
-.color-grid {
+/* Preset Grid */
+.preset-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 8px;
 }
 
-.color-input {
-    width: 100%;
-    height: 48px;
+.preset-btn {
+    padding: 16px 12px;
+    background: rgba(255, 255, 255, 0.03);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    background: transparent;
+    color: rgba(255, 255, 255, 0.7);
     cursor: pointer;
     transition: all 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Monaco', 'Courier New', monospace;
 }
 
-.color-input:hover {
-    border-color: rgba(255, 255, 255, 0.3);
+.preset-btn:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.2);
 }
 
-.color-input::-webkit-color-swatch-wrapper {
-    padding: 0;
+.preset-btn.active {
+    background: rgba(100, 180, 255, 0.15);
+    border-color: rgba(100, 180, 255, 0.5);
+    color: rgba(100, 180, 255, 1);
 }
 
-.color-input::-webkit-color-swatch {
-    border: none;
+.preset-icon {
+    font-size: 24px;
+    line-height: 1;
 }
 
-.color-input::-moz-color-swatch {
-    border: none;
+.preset-name {
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* Step Controls */
+.step-control {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+    gap: 6px;
+}
+
+.step-btn {
+    padding: 10px 8px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: 'Monaco', 'Courier New', monospace;
+    text-transform: uppercase;
+}
+
+.step-btn:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.step-btn.active {
+    background: rgba(100, 180, 255, 0.15);
+    border-color: rgba(100, 180, 255, 0.5);
+    color: rgba(100, 180, 255, 1);
+}
+
+/* Harmony Grid */
+.harmony-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+}
+
+.harmony-btn {
+    padding: 12px 10px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.harmony-btn:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.harmony-btn.active {
+    background: rgba(100, 180, 255, 0.15);
+    border-color: rgba(100, 180, 255, 0.5);
+}
+
+.harmony-swatch {
+    display: flex;
+    gap: 4px;
+    width: 100%;
+}
+
+.harmony-swatch span {
+    flex: 1;
+    height: 32px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.harmony-name {
+    font-size: 9px;
+    letter-spacing: 0.5px;
+    color: rgba(255, 255, 255, 0.6);
+    font-family: 'Monaco', 'Courier New', monospace;
+    text-transform: uppercase;
+}
+
+.harmony-btn.active .harmony-name {
+    color: rgba(100, 180, 255, 1);
 }
 
 /* Buttons */
@@ -286,7 +297,7 @@ body {
     .sidebar {
         width: 100%;
         height: auto;
-        max-height: 70vh;
+        max-height: 75vh;
         bottom: 0;
         top: auto;
         border-left: none;
@@ -295,5 +306,13 @@ body {
 
     #glCanvas {
         height: 100%;
+    }
+
+    .preset-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .harmony-grid {
+        grid-template-columns: repeat(3, 1fr);
     }
 }

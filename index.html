@@ -14,91 +14,129 @@
     <div class="sidebar" id="sidebar">
         <div class="sidebar-header">
             <div class="header-title">SHADER STUDIO</div>
+            <div class="header-subtitle">Water · Thinking · Flow</div>
         </div>
 
         <div class="sidebar-content">
-            <!-- Preset Selection -->
+            <!-- Preset Buttons -->
             <section class="control-section">
-                <label class="control-label">PRESET</label>
-                <select id="effectType" class="control-select">
-                    <option value="warmglow">Warm Glow</option>
-                    <option value="earthrise">Earth Rise</option>
-                    <option value="sage">Sage Garden</option>
-                    <option value="sunset">Sunset Fade</option>
-                    <option value="terracotta">Terracotta Dream</option>
-                    <option value="goldenhr">Golden Hour</option>
-                    <option value="forest">Forest Path</option>
-                    <option value="amber">Amber Waves</option>
-                    <option value="zenstone">Zen Stone</option>
-                    <option value="clay">Clay & Earth</option>
-                    <option value="meadow">Meadow Breeze</option>
-                    <option value="warmth">Inner Warmth</option>
-                </select>
+                <label class="control-label">THINKING MODE</label>
+                <div class="preset-grid">
+                    <button class="preset-btn active" data-preset="ripples">
+                        <span class="preset-icon">◯</span>
+                        <span class="preset-name">Ripples</span>
+                    </button>
+                    <button class="preset-btn" data-preset="current">
+                        <span class="preset-icon">≋</span>
+                        <span class="preset-name">Current</span>
+                    </button>
+                    <button class="preset-btn" data-preset="deep">
+                        <span class="preset-icon">●</span>
+                        <span class="preset-name">Deep</span>
+                    </button>
+                    <button class="preset-btn" data-preset="surface">
+                        <span class="preset-icon">∼</span>
+                        <span class="preset-name">Surface</span>
+                    </button>
+                    <button class="preset-btn" data-preset="tide">
+                        <span class="preset-icon">⟍</span>
+                        <span class="preset-name">Tide</span>
+                    </button>
+                    <button class="preset-btn" data-preset="reflect">
+                        <span class="preset-icon">◇</span>
+                        <span class="preset-name">Reflect</span>
+                    </button>
+                </div>
             </section>
 
-            <!-- Animation -->
+            <!-- Flow Control -->
             <section class="control-section">
-                <label class="control-label">ANIMATION</label>
-                <div class="control-row">
-                    <span class="control-sublabel">Speed</span>
-                    <span class="control-value" id="speedValue">0.6</span>
+                <label class="control-label">FLOW</label>
+                <div class="step-control">
+                    <button class="step-btn active" data-value="0">Still</button>
+                    <button class="step-btn" data-value="1">Gentle</button>
+                    <button class="step-btn" data-value="2">Moderate</button>
+                    <button class="step-btn" data-value="3">Active</button>
                 </div>
-                <input type="range" id="speed" class="control-slider" min="0" max="3" step="0.1" value="0.6">
-
-                <div class="control-row">
-                    <span class="control-sublabel">Intensity</span>
-                    <span class="control-value" id="complexityValue">1.2</span>
-                </div>
-                <input type="range" id="complexity" class="control-slider" min="0.1" max="3" step="0.1" value="1.2">
-
-                <div class="control-row">
-                    <span class="control-sublabel">Scale</span>
-                    <span class="control-value" id="scaleValue">1.0</span>
-                </div>
-                <input type="range" id="scale" class="control-slider" min="0.1" max="5" step="0.1" value="1">
             </section>
 
-            <!-- Colors -->
+            <!-- Depth Control -->
             <section class="control-section">
-                <label class="control-label">COLORS</label>
-                <div class="color-grid">
-                    <input type="color" id="color1" class="color-input" value="#E67E50">
-                    <input type="color" id="color2" class="color-input" value="#F5A962">
-                    <input type="color" id="color3" class="color-input" value="#7D8F69">
+                <label class="control-label">DEPTH</label>
+                <div class="step-control">
+                    <button class="step-btn active" data-value="0">Shallow</button>
+                    <button class="step-btn" data-value="1">Medium</button>
+                    <button class="step-btn" data-value="2">Deep</button>
                 </div>
-
-                <div class="control-row">
-                    <span class="control-sublabel">Saturation</span>
-                    <span class="control-value" id="colorIntensityValue">1.2</span>
-                </div>
-                <input type="range" id="colorIntensity" class="control-slider" min="0" max="2" step="0.1" value="1.2">
             </section>
 
-            <!-- Pattern -->
+            <!-- Movement Control -->
             <section class="control-section">
-                <label class="control-label">PATTERN</label>
-                <div class="control-row">
-                    <span class="control-sublabel">Flow</span>
-                    <span class="control-value" id="distortionValue">0.5</span>
+                <label class="control-label">MOVEMENT</label>
+                <div class="step-control">
+                    <button class="step-btn active" data-value="0">Calm</button>
+                    <button class="step-btn" data-value="1">Flowing</button>
+                    <button class="step-btn" data-value="2">Dynamic</button>
                 </div>
-                <input type="range" id="distortion" class="control-slider" min="0" max="2" step="0.1" value="0.5">
+            </section>
 
-                <div class="control-row">
-                    <span class="control-sublabel">Glow</span>
-                    <span class="control-value" id="glowValue">0.3</span>
+            <!-- Color Harmony -->
+            <section class="control-section">
+                <label class="control-label">COLOR HARMONY</label>
+                <div class="harmony-grid">
+                    <button class="harmony-btn active" data-harmony="ash">
+                        <div class="harmony-swatch">
+                            <span style="background: #E67E50"></span>
+                            <span style="background: #7D8F69"></span>
+                            <span style="background: #F5A962"></span>
+                        </div>
+                        <span class="harmony-name">Ash Warmth</span>
+                    </button>
+                    <button class="harmony-btn" data-harmony="ocean">
+                        <div class="harmony-swatch">
+                            <span style="background: #4A90A4"></span>
+                            <span style="background: #5AB1BB"></span>
+                            <span style="background: #2D5F6D"></span>
+                        </div>
+                        <span class="harmony-name">Ocean Deep</span>
+                    </button>
+                    <button class="harmony-btn" data-harmony="forest">
+                        <div class="harmony-swatch">
+                            <span style="background: #6B8F71"></span>
+                            <span style="background: #8FA888"></span>
+                            <span style="background: #4A6B52"></span>
+                        </div>
+                        <span class="harmony-name">Forest Moss</span>
+                    </button>
+                    <button class="harmony-btn" data-harmony="sunset">
+                        <div class="harmony-swatch">
+                            <span style="background: #E88D67"></span>
+                            <span style="background: #9B6B9E"></span>
+                            <span style="background: #F4A261"></span>
+                        </div>
+                        <span class="harmony-name">Sunset Glow</span>
+                    </button>
+                    <button class="harmony-btn" data-harmony="moonlight">
+                        <div class="harmony-swatch">
+                            <span style="background: #7B8FA3"></span>
+                            <span style="background: #A8B5C7"></span>
+                            <span style="background: #4E5D6C"></span>
+                        </div>
+                        <span class="harmony-name">Moonlight</span>
+                    </button>
+                    <button class="harmony-btn" data-harmony="earth">
+                        <div class="harmony-swatch">
+                            <span style="background: #9B7E6F"></span>
+                            <span style="background: #6B8FA3"></span>
+                            <span style="background: #C4A57B"></span>
+                        </div>
+                        <span class="harmony-name">Earth & Sky</span>
+                    </button>
                 </div>
-                <input type="range" id="glow" class="control-slider" min="0" max="1" step="0.05" value="0.3">
-
-                <div class="control-row">
-                    <span class="control-sublabel">Brightness</span>
-                    <span class="control-value" id="brightnessValue">1.1</span>
-                </div>
-                <input type="range" id="brightness" class="control-slider" min="0" max="2" step="0.1" value="1.1">
             </section>
 
             <!-- Actions -->
             <section class="control-section">
-                <button id="randomizeBtn" class="btn btn-secondary">RANDOMIZE</button>
                 <button id="resetBtn" class="btn btn-secondary">RESET TIME</button>
                 <button id="playBtn" class="btn btn-primary">
                     <span id="playText">PAUSE</span>

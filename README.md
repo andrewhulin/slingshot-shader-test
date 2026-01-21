@@ -1,179 +1,198 @@
 # Shader Studio
 
-A minimal no-code shader creator for generating warm, earthy therapeutic background animations. Designed for the Ash AI therapy mobile app with brand-aligned colors and artistic direction.
+A minimal no-code shader creator for generating water-based thinking animations. Designed for the Ash AI therapy mobile app, these shaders artistically simulate different modes of thinking through water metaphors.
 
 ## Overview
 
-Create calming, visually prominent shader backgrounds using Ash's warm orange/coral and sage green color palette. Features 12 artistically curated presets that feel cohesive with the brand's earthy, natural aesthetic.
+Create calming, contemplative shader backgrounds that represent thinking as water - flowing, rippling, reflecting. Features 6 unique water-based presets with stepped controls and curated color harmonies that always look beautiful.
 
 ## Features
 
-- **12 Brand-Aligned Presets** - Warm, earthy shaders using orange, coral, sage, and earth tones
-- **Prominent Visual Presence** - More visible and engaging than traditional therapy backgrounds
-- **Artistic Direction** - Each preset has a unique character (glow, waves, gradients, textures)
+- **6 Water-Based Thinking Modes** - Each preset simulates a different way of thinking through water behavior
+- **Icon-Based Preset Selection** - Visual buttons with symbolic icons for each mode
+- **Stepped Controls** - Discrete button controls instead of sliders for better results
+- **Curated Color Harmonies** - 6 pre-designed palettes that always work well together
 - **Technical Aesthetic** - Minimal black/white UI with conservative blue accents
 - **Full-Screen Preview** - Immersive shader background with right sidebar controls
-- **Real-Time Adjustments** - See changes instantly as parameters are modified
+- **Real-Time Updates** - See changes instantly as you adjust controls
 - **Export Functionality** - Save generated shaders as .frag files
 
 ## Quick Start
 
 1. Open `index.html` in a modern web browser
-2. Select a preset from the dropdown
-3. Adjust parameters using sliders
-4. Customize with brand color pickers
-5. Export your shader when satisfied
+2. Select a thinking mode by clicking one of the 6 preset buttons
+3. Adjust Flow, Depth, and Movement using stepped button controls
+4. Choose a color harmony from the 6 curated palettes
+5. Use Play/Pause and Reset Time controls as needed
+6. Export your shader when satisfied
 
 No installation or build process required.
 
-## Brand-Aligned Presets
+## Water-Based Thinking Modes
 
-### 1. Warm Glow
-Radiant warmth emanating from the center with gentle pulsing.
-- Central radial glow
-- Soft pulsing animation
-- Perfect for welcoming moments
+### 1. Ripples (◯)
+**Thoughts spreading outward**
+- Concentric ripples emanating from center
+- Multiple overlapping wave patterns
+- Represents ideas radiating outward from a central insight
+- Good for: Initial exploration, brainstorming
 
-### 2. Earth Rise
-Rising gradient with organic wave movement.
-- Bottom-to-top gradient
-- Flowing horizontal waves
-- Represents growth and progress
+### 2. Current (≋)
+**Directional thinking**
+- Flowing horizontal current with vertical variation
+- Consistent directional movement
+- Represents focused, goal-directed thought
+- Good for: Problem-solving, linear reasoning
 
-### 3. Sage Garden
-Organic flowing patterns inspired by sage leaves.
-- Soft, natural flow
-- Green-dominant palette
-- Calm, grounded feeling
+### 3. Deep (●)
+**Layered stratified thinking**
+- Multiple depth layers with distinct characteristics
+- Stratified water patterns
+- Represents complex, multi-level analysis
+- Good for: Deep reflection, analyzing complexity
 
-### 4. Sunset Fade
-Warm sunset gradient with soft shimmer.
-- Top-to-bottom warm fade
-- Gentle horizontal drift
-- Evening calm aesthetic
+### 4. Surface (∼)
+**Scattered light thoughts**
+- Dancing light reflections on water surface
+- Shimmering, scattered patterns
+- Represents quick, surface-level ideation
+- Good for: Fast thinking, first impressions
 
-### 5. Terracotta Dream
-Earthy terracotta waves with layered texture.
-- Crossing wave patterns
-- Clay-like earth tones
-- Warm, grounded presence
+### 5. Tide (⟍)
+**Rhythmic cyclical thinking**
+- Slow, rhythmic tidal movement
+- Diagonal flow patterns
+- Represents cyclic thought processes
+- Good for: Meditation, pattern recognition
 
-### 6. Golden Hour
-Warm diffusion with subtle ray patterns.
-- Radial rays of light
-- Golden diffuse glow
-- Uplifting and warm
+### 6. Reflect (◇)
+**Introspective mirror thinking**
+- Radial mirror-like reflection patterns
+- Symmetrical arrangements
+- Represents self-reflection and introspection
+- Good for: Self-awareness, contemplation
 
-### 7. Forest Path
-Dappled light through forest canopy.
-- Organic dappled patterns
-- Green-forward palette
-- Natural, peaceful movement
+## Color Harmonies
 
-### 8. Amber Waves
-Flowing amber warmth across the canvas.
-- Wave interference patterns
-- Honey-amber tones
-- Smooth, continuous flow
+Six curated color palettes designed to always work well together. Each harmony contains three colors that complement each other beautifully.
 
-### 9. Zen Stone
-Concentric ripples like water on stone.
-- Centered ripple patterns
-- Meditative quality
-- Calm, focused energy
+### 1. Ash Warmth
+- #E67E50 (Warm Coral)
+- #7D8F69 (Sage Green)
+- #F5A962 (Golden Orange)
+- **Character**: Brand-aligned warmth with natural balance
 
-### 10. Clay & Earth
-Textured earth with clay-like qualities.
-- Cross-hatched texture
-- Raw earth aesthetic
-- Organic, handcrafted feel
+### 2. Ocean Deep
+- #4A90A4 (Deep Teal)
+- #5AB1BB (Turquoise)
+- #2D5F6D (Dark Ocean)
+- **Character**: Cool, calming water depths
 
-### 11. Meadow Breeze
-Gentle breeze moving through a meadow.
-- Soft flowing movement
-- Green and warm tones
-- Light, airy feeling
+### 3. Forest Moss
+- #6B8F71 (Forest Green)
+- #8FA888 (Soft Moss)
+- #4A6B52 (Deep Moss)
+- **Character**: Natural, grounded earth tones
 
-### 12. Inner Warmth
-Core warmth radiating outward with rings.
-- Central warmth source
-- Gentle rings of energy
-- Nurturing, safe feeling
+### 4. Sunset Glow
+- #E88D67 (Peach)
+- #9B6B9E (Soft Purple)
+- #F4A261 (Warm Amber)
+- **Character**: Warm evening light
 
-## Brand Color Palette
+### 5. Moonlight
+- #7B8FA3 (Cool Blue-Gray)
+- #A8B5C7 (Soft Lavender)
+- #4E5D6C (Deep Night)
+- **Character**: Cool, serene nighttime
 
-### Primary Colors
-- **Warm Coral**: #E67E50
-- **Golden Orange**: #F5A962
-- **Sage Green**: #7D8F69
+### 6. Earth & Sky
+- #9B7E6F (Warm Earth)
+- #6B8FA3 (Sky Blue)
+- #C4A57B (Golden Earth)
+- **Character**: Balance of earth and air
 
-### Extended Palette
-**Warm Oranges & Corals**
-- #E67E50, #F5A962, #FF8C42, #E8956C, #F4A261, #ED9455
+## Stepped Controls
 
-**Sage & Olive Greens**
-- #7D8F69, #6B7F5C, #8B9D6F, #73856A, #8A9B7A, #6F8062
+Instead of continuous sliders, Shader Studio uses discrete stepped controls that map to carefully tuned values. This ensures every combination produces beautiful results.
 
-**Earth Tones**
-- #B89176, #A17F6B, #C4A578, #9B8169, #D4A574
+### Flow (4 Steps)
+Controls animation speed and temporal dynamics:
+- **Still** (0): Minimal animation (speed: 0.2)
+- **Gentle** (1): Slow, calm movement (speed: 0.5)
+- **Moderate** (2): Comfortable pace (speed: 1.0)
+- **Active** (3): Energetic flow (speed: 1.8)
 
-**Creams & Warm Neutrals**
-- #EDE8DC, #F5F1E8, #E8DCC8, #DDD5C7
+### Depth (3 Steps)
+Controls pattern complexity and layering:
+- **Shallow** (0): Simple, clear patterns (complexity: 0.8)
+- **Medium** (1): Balanced detail (complexity: 1.2)
+- **Deep** (2): Rich, complex layers (complexity: 2.0)
 
-## Parameters
-
-### Animation
-- **Speed** (0-3): Controls animation speed - Default: 0.6
-- **Intensity** (0.1-3): Pattern complexity and detail - Default: 1.2
-- **Scale** (0.1-5): Zoom level of the effect - Default: 1.0
-
-### Colors
-- **Color 1/2/3**: Three brand-aligned color pickers
-- **Saturation** (0-2): Overall color intensity - Default: 1.2
-
-### Pattern
-- **Flow** (0-2): Pattern warping and movement - Default: 0.5
-- **Glow** (0-1): Radial glow intensity - Default: 0.3
-- **Brightness** (0-2): Overall brightness level - Default: 1.1
+### Movement (3 Steps)
+Controls pattern intensity and variation:
+- **Calm** (0): Gentle, subtle variation (intensity: 0.6)
+- **Flowing** (1): Natural movement (intensity: 1.0)
+- **Dynamic** (2): Energetic variation (intensity: 1.5)
 
 ## Controls
 
-- **RANDOMIZE**: Generate random brand-aligned shader
+### Thinking Mode Presets
+Click any of the 6 preset buttons to switch between water-based thinking modes. Active preset is highlighted with blue accent.
+
+### Stepped Parameters
+Click buttons in each control section to adjust:
+- **Flow**: Still → Gentle → Moderate → Active
+- **Depth**: Shallow → Medium → Deep
+- **Movement**: Calm → Flowing → Dynamic
+
+### Color Harmonies
+Click any harmony button to apply a curated 3-color palette. Visual swatches show the colors before applying.
+
+### Action Buttons
 - **RESET TIME**: Reset animation to t=0
 - **PAUSE/PLAY**: Toggle animation playback
 - **EXPORT .FRAG**: Download GLSL shader code
 
 ## Design Philosophy
 
-### Brand Alignment
-- Warm, earthy color palette (orange, coral, sage, earth tones)
-- Natural, organic movements
-- More prominent than traditional therapy backgrounds
-- Artistic direction for each preset
-- Visually engaging while remaining calming
+### Water as Thinking
+- Water metaphors represent different cognitive modes
+- Flow, depth, and movement mirror thought processes
+- Each preset has unique character and purpose
+- Visual representation of mental states
+- Calming yet engaging animations
+
+### Curated Simplicity
+- Stepped controls prevent overwhelming choices
+- Pre-designed color harmonies ensure good results
+- No "bad" combinations possible
+- Creative control within guided boundaries
+- Focus on exploration, not technical tuning
 
 ### Technical Aesthetic
 - Monospace Monaco/Courier New typography
 - Black background with subtle white/gray UI elements
 - Conservative use of blue accent color (rgba(100, 180, 255))
-- Sharp, precise controls
+- Icon-based preset selection
 - Minimal visual hierarchy
 
 ### Therapeutic Focus
 - Designed for calm, supportive backgrounds
-- Moderate movement (not too slow, not jarring)
-- Warm color palettes for comfort and safety
-- Increased brightness for prominence (1.1 default)
+- Water themes promote contemplation
+- Color harmonies create emotional safety
 - Professional aesthetic for healthcare
+- Accessible to non-technical users
 
 ## Use in Ash AI Therapy App
 
-These shaders are specifically designed as background elements for Ash:
+These shaders are specifically designed as contemplative backgrounds for Ash:
 
-- **Brand-Aligned**: Uses Ash's warm orange/coral and sage green palette
-- **Prominent**: Visible and engaging without overwhelming foreground
-- **Supportive**: Warm colors create feeling of safety and comfort
-- **Natural**: Organic movements mirror nature and breathing
+- **Thinking Metaphors**: Water-based animations represent different mental states
+- **Accessible**: No-code interface appropriate for all users
+- **Curated**: Color harmonies include Ash brand palette options
+- **Supportive**: Water themes promote calm reflection
+- **Natural**: Organic movements mirror breathing and thought
 - **Professional**: Appropriate for therapeutic context
 - **Performance**: Optimized for mobile devices
 
@@ -185,17 +204,31 @@ All shaders include:
 ```glsl
 uniform float iTime;              // Animation time
 uniform vec2 iResolution;         // Canvas resolution
-uniform float speed;              // Speed multiplier (default: 0.6)
-uniform float complexity;         // Pattern intensity (default: 1.2)
-uniform float scale;              // Zoom level (default: 1.0)
-uniform vec3 color1;              // Primary color (E67E50)
-uniform vec3 color2;              // Secondary color (F5A962)
-uniform vec3 color3;              // Tertiary color (7D8F69)
-uniform float colorIntensity;     // Color saturation (default: 1.2)
-uniform float distortion;         // Pattern flow (default: 0.5)
-uniform float glow;               // Glow intensity (default: 0.3)
-uniform float brightness;         // Brightness multiplier (default: 1.1)
+uniform float speed;              // From Flow control (0.2 - 1.8)
+uniform float complexity;         // From Depth control (0.8 - 2.0)
+uniform float intensity;          // From Movement control (0.6 - 1.5)
+uniform vec3 color1;              // First harmony color
+uniform vec3 color2;              // Second harmony color
+uniform vec3 color3;              // Third harmony color
 ```
+
+### Stepped Parameter Mapping
+
+**Flow → Speed**
+- Still (0): 0.2
+- Gentle (1): 0.5
+- Moderate (2): 1.0
+- Active (3): 1.8
+
+**Depth → Complexity**
+- Shallow (0): 0.8
+- Medium (1): 1.2
+- Deep (2): 2.0
+
+**Movement → Intensity**
+- Calm (0): 0.6
+- Flowing (1): 1.0
+- Dynamic (2): 1.5
 
 ### Browser Compatibility
 
@@ -237,17 +270,16 @@ The export includes all uniforms and requires the host application to provide un
 
 ## Artistic Direction
 
-Each preset is designed with a specific mood and visual character:
+Each water-based thinking mode is designed with distinct visual character:
 
-- **Warm Glow / Inner Warmth**: Central, radiating warmth
-- **Earth Rise / Sunset**: Gradient-based with directional flow
-- **Sage Garden / Meadow Breeze**: Organic, flowing movement
-- **Terracotta / Clay & Earth**: Textured, earthy quality
-- **Golden Hour / Amber Waves**: Light and warmth diffusion
-- **Forest Path**: Dappled, natural light patterns
-- **Zen Stone**: Meditative, centered ripples
+- **Ripples**: Concentric waves spreading outward - exploratory, expansive thinking
+- **Current**: Directional flow - focused, goal-oriented thought
+- **Deep**: Stratified layers - complex, multi-level analysis
+- **Surface**: Scattered shimmer - quick, surface-level ideation
+- **Tide**: Rhythmic cycles - meditative, pattern-based thinking
+- **Reflect**: Radial symmetry - introspective, self-examining thought
 
-All presets maintain therapeutic qualities while being visually engaging enough to serve as prominent app backgrounds.
+All modes use water behaviors to create calming yet engaging animations that represent different cognitive states. The metaphor helps users connect with their thinking process visually.
 
 ## License
 
@@ -255,4 +287,4 @@ Free to use for personal and commercial projects.
 
 ---
 
-**Shader Studio** - Brand-aligned therapeutic backgrounds for Ash AI Therapy App
+**Shader Studio** - Water-based thinking animations for Ash AI Therapy App
