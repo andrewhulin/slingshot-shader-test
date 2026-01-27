@@ -1,4 +1,4 @@
-// Shader Studio - Water-Based Thinking Shaders for Ash AI Therapy App
+// Fire Shader Studio - Fire-Based Visual Effects
 
 class ShaderStudio {
     constructor() {
@@ -14,44 +14,44 @@ class ShaderStudio {
 
         // Stepped parameters
         this.params = {
-            preset: 'ripples',
-            flow: 0,          // 0-3: Still, Gentle, Moderate, Active
-            depth: 0,         // 0-2: Shallow, Medium, Deep
-            movement: 0,      // 0-2: Calm, Flowing, Dynamic
-            harmony: 'ash'    // Color harmony preset
+            preset: 'flames',
+            flow: 0,          // 0-3: Cool, Warm, Hot, Blazing (heat)
+            depth: 0,         // 0-2: Low, Medium, High (intensity)
+            movement: 0,      // 0-2: Steady, Flickering, Chaotic (turbulence)
+            harmony: 'classic'    // Color harmony preset
         };
 
-        // Color harmonies - curated palettes that always look good
+        // Color harmonies - fire-themed palettes
         this.harmonies = {
-            ash: {
-                color1: [0.902, 0.494, 0.314], // #E67E50
-                color2: [0.490, 0.561, 0.412], // #7D8F69
-                color3: [0.961, 0.663, 0.384]  // #F5A962
+            classic: {
+                color1: [1.000, 0.271, 0.000], // #FF4500 - Orange Red
+                color2: [1.000, 0.549, 0.000], // #FF8C00 - Dark Orange
+                color3: [1.000, 0.843, 0.000]  // #FFD700 - Gold
             },
-            ocean: {
-                color1: [0.290, 0.565, 0.643], // #4A90A4
-                color2: [0.353, 0.694, 0.733], // #5AB1BB
-                color3: [0.176, 0.373, 0.427]  // #2D5F6D
+            infernal: {
+                color1: [0.545, 0.000, 0.000], // #8B0000 - Dark Red
+                color2: [0.863, 0.078, 0.235], // #DC143C - Crimson
+                color3: [1.000, 0.271, 0.000]  // #FF4500 - Orange Red
             },
-            forest: {
-                color1: [0.420, 0.561, 0.443], // #6B8F71
-                color2: [0.561, 0.659, 0.533], // #8FA888
-                color3: [0.290, 0.420, 0.322]  // #4A6B52
+            lava: {
+                color1: [1.000, 0.388, 0.278], // #FF6347 - Tomato
+                color2: [1.000, 0.549, 0.000], // #FF8C00 - Dark Orange
+                color3: [0.290, 0.000, 0.000]  // #4A0000 - Deep Dark Red
             },
-            sunset: {
-                color1: [0.910, 0.553, 0.404], // #E88D67
-                color2: [0.608, 0.420, 0.620], // #9B6B9E
-                color3: [0.957, 0.635, 0.380]  // #F4A261
+            ember: {
+                color1: [0.545, 0.271, 0.075], // #8B4513 - Saddle Brown
+                color2: [0.824, 0.412, 0.118], // #D2691E - Chocolate
+                color3: [1.000, 0.498, 0.314]  // #FF7F50 - Coral
             },
-            moonlight: {
-                color1: [0.482, 0.561, 0.639], // #7B8FA3
-                color2: [0.659, 0.710, 0.780], // #A8B5C7
-                color3: [0.306, 0.365, 0.424]  // #4E5D6C
+            plasma: {
+                color1: [1.000, 0.078, 0.576], // #FF1493 - Deep Pink
+                color2: [1.000, 0.271, 0.000], // #FF4500 - Orange Red
+                color3: [1.000, 0.843, 0.000]  // #FFD700 - Gold
             },
-            earth: {
-                color1: [0.608, 0.494, 0.435], // #9B7E6F
-                color2: [0.420, 0.561, 0.639], // #6B8FA3
-                color3: [0.769, 0.647, 0.482]  // #C4A57B
+            solar: {
+                color1: [1.000, 0.647, 0.000], // #FFA500 - Orange
+                color2: [1.000, 1.000, 0.000], // #FFFF00 - Yellow
+                color3: [1.000, 1.000, 1.000]  // #FFFFFF - White
             }
         };
 
@@ -162,152 +162,167 @@ class ShaderStudio {
         const p = this.params;
 
         // Map stepped values to shader parameters
-        const speed = [0.2, 0.5, 1.0, 1.8][p.flow];
-        const complexity = [0.8, 1.2, 2.0][p.depth];
-        const intensity = [0.6, 1.0, 1.5][p.movement];
+        const speed = [0.3, 0.7, 1.2, 2.0][p.flow];
+        const complexity = [0.8, 1.3, 2.0][p.depth];
+        const intensity = [0.5, 1.0, 1.8][p.movement];
 
         let shaderEffectCode = '';
 
         switch (p.preset) {
-            case 'ripples':
-                // Concentric ripples - thoughts spreading outward
+            case 'flames':
+                // Rising flames effect
                 shaderEffectCode = `
     vec2 p = uv;
-    float dist = length(p);
 
-    // Multiple ripple sources for depth
-    float ripple1 = sin(dist * 12.0 * complexity - t * speed * 2.0) * 0.5 + 0.5;
-    float ripple2 = sin(dist * 8.0 * complexity - t * speed * 1.5 + 1.0) * 0.5 + 0.5;
-    float ripple3 = sin(dist * 15.0 * complexity - t * speed * 2.5 + 2.0) * 0.5 + 0.5;
+    // Create upward-moving noise for flames
+    float flame1 = sin(p.x * 8.0 * complexity + sin(p.y * 3.0 + t * speed * 2.0) * 2.0);
+    float flame2 = sin(p.x * 12.0 * complexity + sin(p.y * 4.0 + t * speed * 2.5) * 1.5 + 1.0);
+    float flame3 = sin(p.x * 6.0 * complexity + sin(p.y * 2.0 + t * speed * 1.8) * 2.5 + 2.0);
 
-    // Exponential falloff for depth
-    float falloff = exp(-dist * (2.0 - intensity));
+    // Vertical gradient - flames stronger at bottom
+    float vertGrad = 1.0 - (p.y + 1.0) * 0.5;
+    vertGrad = pow(max(vertGrad, 0.0), 0.8);
 
-    float pattern = (ripple1 * 0.5 + ripple2 * 0.3 + ripple3 * 0.2) * falloff;
+    // Combine flames with flickering
+    float flicker = sin(t * speed * 8.0) * 0.1 * intensity + 0.9;
+    float pattern = (flame1 * 0.4 + flame2 * 0.35 + flame3 * 0.25) * 0.5 + 0.5;
+    pattern *= vertGrad * flicker;
 
-    // Color based on ripple intensity
+    // Fire color gradient - red at edges, yellow/white at core
     vec3 col = mix(color1, color2, pattern);
-    col = mix(col, color3, ripple1 * falloff);
+    col = mix(col, color3, pow(pattern, 2.0) * intensity);
                 `;
                 break;
 
-            case 'current':
-                // Flowing current - directional thinking
+            case 'inferno':
+                // Intense upward rushing fire
                 shaderEffectCode = `
     vec2 p = uv;
 
-    // Flowing horizontal current with vertical variation
-    float current = sin(p.x * 4.0 * complexity - t * speed * 1.5);
-    current += sin((p.x - p.y * 0.5) * 6.0 * complexity - t * speed * 2.0) * 0.5;
-    current += cos(p.x * 3.0 * complexity + p.y * 2.0 - t * speed) * 0.3;
+    // Fast upward movement with turbulence
+    float turb1 = sin(p.x * 10.0 * complexity + t * speed * 3.0);
+    float turb2 = cos(p.x * 15.0 * complexity - t * speed * 2.5 + p.y * 5.0);
 
-    // Vertical gradient for depth
-    float depthGrad = (p.y + 1.0) * 0.5;
-    depthGrad = pow(depthGrad, 1.5 - intensity * 0.5);
+    // Rising columns of fire
+    float rise = sin(p.x * 6.0 * complexity) * cos(p.y * 2.0 - t * speed * 4.0);
+    rise += sin(p.x * 9.0 * complexity + 1.5) * cos(p.y * 3.0 - t * speed * 3.5) * 0.7;
 
-    float pattern = (current * 0.4 + 0.5) * depthGrad;
+    // Vertical intensity
+    float vertGrad = 1.0 - (p.y + 1.0) * 0.4;
+    vertGrad = pow(max(vertGrad, 0.0), 0.6);
 
-    // Flowing color shifts
-    vec3 col = mix(color2, color1, pattern);
-    col = mix(col, color3, sin(pattern * 3.14159 + t * speed * 0.5) * 0.5 + 0.5);
+    float pattern = (rise * 0.5 + turb1 * 0.3 + turb2 * 0.2) * 0.5 + 0.5;
+    pattern *= vertGrad * (1.0 + sin(t * speed * 10.0) * intensity * 0.2);
+
+    vec3 col = mix(color1, color2, pattern);
+    col = mix(col, color3, pow(pattern, 1.5) * intensity * 0.8);
                 `;
                 break;
 
-            case 'deep':
-                // Deep layered thinking - stratified water layers
+            case 'embers':
+                // Glowing embers pulsing
                 shaderEffectCode = `
     vec2 p = uv;
     float dist = length(p);
 
-    // Layered depth with different speeds
-    float layer1 = sin(p.y * 5.0 * complexity + t * speed * 0.3);
-    float layer2 = sin(p.y * 8.0 * complexity + t * speed * 0.5 + 1.0);
-    float layer3 = sin(p.y * 12.0 * complexity + t * speed * 0.7 + 2.0);
+    // Pulsing ember glow
+    float pulse1 = sin(dist * 8.0 * complexity - t * speed * 1.5) * 0.5 + 0.5;
+    float pulse2 = sin(dist * 12.0 * complexity - t * speed * 2.0 + 2.0) * 0.5 + 0.5;
+    float pulse3 = sin(dist * 6.0 * complexity - t * speed * 1.2 + 4.0) * 0.5 + 0.5;
 
-    // Add horizontal variation
-    float variation = sin(p.x * 3.0 + t * speed * 0.2) * 0.3;
+    // Breathing effect
+    float breath = sin(t * speed * 0.8) * 0.3 * intensity + 0.7;
 
-    // Combine layers with depth
-    float pattern = (layer1 * 0.5 + layer2 * 0.3 + layer3 * 0.2 + variation);
-    pattern = pattern * 0.5 + 0.5;
+    // Scattered hot spots
+    float spots = sin(p.x * 15.0 + t * speed) * sin(p.y * 15.0 - t * speed * 0.8);
+    spots = pow(max(spots, 0.0), 2.0) * intensity;
 
-    // Depth darkening
-    pattern *= 1.0 - dist * (1.5 - intensity * 0.5);
+    float pattern = (pulse1 * 0.4 + pulse2 * 0.35 + pulse3 * 0.25) * breath + spots * 0.3;
 
-    vec3 col = mix(color3, color2, pattern);
-    col = mix(col, color1, layer1 * 0.3 + 0.4);
+    // Ember colors - deep red to orange glow
+    vec3 col = mix(color1, color2, pattern);
+    col = mix(col, color3, spots + pattern * 0.3);
                 `;
                 break;
 
-            case 'surface':
-                // Surface patterns - scattered light thoughts
+            case 'sparks':
+                // Flying sparks effect
                 shaderEffectCode = `
     vec2 p = uv;
 
-    // Scattered surface reflections
-    float scatter1 = sin(p.x * 10.0 * complexity + t * speed * 2.0);
-    float scatter2 = sin(p.y * 8.0 * complexity - t * speed * 1.5);
-    float scatter3 = sin((p.x + p.y) * 6.0 * complexity + t * speed * 1.8);
+    // Scattered spark patterns
+    float spark1 = sin(p.x * 20.0 * complexity + t * speed * 3.0);
+    float spark2 = sin(p.y * 18.0 * complexity - t * speed * 2.5);
+    float spark3 = sin((p.x - p.y) * 15.0 * complexity + t * speed * 4.0);
 
-    // Combine with interference
-    float pattern = scatter1 * scatter2 * 0.5 + scatter3 * 0.3 + 0.5;
-    pattern *= 1.0 + sin(t * speed * 0.5) * intensity * 0.3;
+    // Combine for interference pattern
+    float sparks = spark1 * spark2 * 0.5 + spark3 * 0.3;
+    sparks = pow(max(sparks, 0.0), 1.5);
 
-    // Shimmer effect
-    float shimmer = sin(p.x * 20.0 + p.y * 15.0 + t * speed * 3.0) * 0.1;
-    pattern += shimmer;
+    // Rising motion
+    float rise = sin(p.y * 3.0 - t * speed * 2.0 + p.x * 2.0) * 0.5 + 0.5;
 
-    vec3 col = mix(color1, color3, pattern * 0.8);
-    col = mix(col, color2, scatter1 * 0.4 + 0.5);
+    // Flickering intensity
+    float flicker = sin(t * speed * 15.0 + p.x * 10.0) * 0.2 * intensity + 0.8;
+
+    float pattern = sparks * rise * flicker;
+    pattern += sin(p.x * 30.0 + p.y * 25.0 + t * speed * 5.0) * 0.1 * intensity;
+
+    vec3 col = mix(color1, color3, pattern);
+    col = mix(col, color2, sparks * intensity);
                 `;
                 break;
 
-            case 'tide':
-                // Rhythmic tide - cyclical thinking
+            case 'blaze':
+                // Intense wall of fire
                 shaderEffectCode = `
     vec2 p = uv;
 
-    // Rhythmic tidal movement
-    float tide = sin(t * speed * 0.8) * intensity * 0.5;
+    // Horizontal waves of fire
+    float wave1 = sin(p.y * 4.0 * complexity + t * speed * 2.0 + sin(p.x * 3.0) * 2.0);
+    float wave2 = sin(p.y * 6.0 * complexity + t * speed * 2.5 + sin(p.x * 4.0) * 1.5);
+    float wave3 = sin(p.y * 3.0 * complexity + t * speed * 1.8 + sin(p.x * 2.0) * 2.5);
 
-    // Horizontal waves with tide influence
-    float wave1 = sin(p.x * 6.0 * complexity + t * speed * 1.2 + tide);
-    float wave2 = sin(p.x * 4.0 * complexity - t * speed * 0.8 + tide * 1.5);
+    // Intensity modulation
+    float blaze = sin(t * speed * 1.5) * 0.2 * intensity + 0.8;
 
-    // Vertical gradient modified by tide
-    float gradient = (p.y + 1.0 + tide * 0.3) * 0.5;
+    // Combine waves
+    float pattern = (wave1 * 0.4 + wave2 * 0.35 + wave3 * 0.25) * 0.5 + 0.5;
+    pattern *= blaze;
 
-    float pattern = (wave1 * 0.6 + wave2 * 0.4) * 0.5 + 0.5;
-    pattern *= gradient;
+    // Add heat distortion
+    float distort = sin(p.x * 8.0 + t * speed * 3.0) * sin(p.y * 6.0 + t * speed * 2.5) * 0.2 * intensity;
+    pattern += distort;
 
-    // Tidal color shift
-    vec3 col = mix(color2, color1, pattern);
-    col = mix(col, color3, abs(sin(t * speed * 0.4)) * 0.6 + 0.2);
+    vec3 col = mix(color1, color2, pattern);
+    col = mix(col, color3, pow(pattern, 1.8) * intensity);
                 `;
                 break;
 
-            case 'reflect':
-                // Mirror reflection - introspective thinking
+            case 'corona':
+                // Solar corona / radial fire
                 shaderEffectCode = `
     vec2 p = uv;
-
-    // Symmetrical reflection from center
     float dist = length(p);
     float angle = atan(p.y, p.x);
 
-    // Mirror patterns
-    float reflect1 = sin(dist * 10.0 * complexity - t * speed) * cos(angle * 4.0);
-    float reflect2 = cos(dist * 8.0 * complexity + t * speed * 0.7) * sin(angle * 6.0);
+    // Radial flares
+    float flare1 = sin(angle * 8.0 + t * speed * 2.0) * cos(dist * 5.0 * complexity - t * speed);
+    float flare2 = sin(angle * 12.0 - t * speed * 1.5) * cos(dist * 8.0 * complexity + t * speed * 0.8);
+    float flare3 = sin(angle * 6.0 + t * speed * 2.5) * cos(dist * 4.0 * complexity - t * speed * 1.2);
 
-    // Combine with radial gradient
-    float radial = exp(-dist * (2.0 - intensity * 0.5));
+    // Central glow
+    float glow = exp(-dist * (2.5 - intensity * 0.8));
 
-    float pattern = (reflect1 * 0.6 + reflect2 * 0.4) * 0.5 + 0.5;
-    pattern *= radial;
+    // Pulsing core
+    float pulse = sin(t * speed * 2.0) * 0.15 * intensity + 0.85;
 
-    // Reflective color mixing
+    float pattern = (flare1 * 0.4 + flare2 * 0.35 + flare3 * 0.25) * 0.5 + 0.5;
+    pattern = pattern * glow * pulse + glow * 0.5;
+
+    // Corona colors - white hot center to red edges
     vec3 col = mix(color1, color2, pattern);
-    col = mix(col, color3, reflect1 * radial * 0.5 + 0.5);
+    col = mix(col, color3, glow * intensity);
                 `;
                 break;
         }
@@ -332,12 +347,12 @@ void main() {
 
     ${shaderEffectCode}
 
-    // Subtle overall glow
+    // Fire glow effect
     float dist = length(uv);
-    col += vec3(0.15) / (dist * 3.0 + 1.0);
+    col += color2 * 0.1 / (dist * 2.0 + 0.5);
 
     // Clamp and enhance
-    col = clamp(col, 0.0, 1.2);
+    col = clamp(col, 0.0, 1.3);
 
     gl_FragColor = vec4(col, 1.0);
 }

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shader Studio</title>
+    <title>Fire Shader Studio</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -13,70 +13,70 @@
     <!-- Right sidebar control panel -->
     <div class="sidebar" id="sidebar">
         <div class="sidebar-header">
-            <div class="header-title">SHADER STUDIO</div>
-            <div class="header-subtitle">Water · Thinking · Flow</div>
+            <div class="header-title">FIRE SHADER STUDIO</div>
+            <div class="header-subtitle">Fire · Energy · Heat</div>
         </div>
 
         <div class="sidebar-content">
             <!-- Preset Buttons -->
             <section class="control-section">
-                <label class="control-label">THINKING MODE</label>
+                <label class="control-label">FIRE MODE</label>
                 <div class="preset-grid">
-                    <button class="preset-btn active" data-preset="ripples">
-                        <span class="preset-icon">◯</span>
-                        <span class="preset-name">Ripples</span>
+                    <button class="preset-btn active" data-preset="flames">
+                        <span class="preset-icon">🔥</span>
+                        <span class="preset-name">Flames</span>
                     </button>
-                    <button class="preset-btn" data-preset="current">
-                        <span class="preset-icon">≋</span>
-                        <span class="preset-name">Current</span>
+                    <button class="preset-btn" data-preset="inferno">
+                        <span class="preset-icon">⬆</span>
+                        <span class="preset-name">Inferno</span>
                     </button>
-                    <button class="preset-btn" data-preset="deep">
+                    <button class="preset-btn" data-preset="embers">
                         <span class="preset-icon">●</span>
-                        <span class="preset-name">Deep</span>
+                        <span class="preset-name">Embers</span>
                     </button>
-                    <button class="preset-btn" data-preset="surface">
-                        <span class="preset-icon">∼</span>
-                        <span class="preset-name">Surface</span>
+                    <button class="preset-btn" data-preset="sparks">
+                        <span class="preset-icon">✦</span>
+                        <span class="preset-name">Sparks</span>
                     </button>
-                    <button class="preset-btn" data-preset="tide">
-                        <span class="preset-icon">⟍</span>
-                        <span class="preset-name">Tide</span>
+                    <button class="preset-btn" data-preset="blaze">
+                        <span class="preset-icon">☀</span>
+                        <span class="preset-name">Blaze</span>
                     </button>
-                    <button class="preset-btn" data-preset="reflect">
-                        <span class="preset-icon">◇</span>
-                        <span class="preset-name">Reflect</span>
+                    <button class="preset-btn" data-preset="corona">
+                        <span class="preset-icon">◎</span>
+                        <span class="preset-name">Corona</span>
                     </button>
                 </div>
             </section>
 
-            <!-- Flow Control -->
+            <!-- Heat Control -->
             <section class="control-section">
-                <label class="control-label">FLOW</label>
+                <label class="control-label">HEAT</label>
                 <div class="step-control">
-                    <button class="step-btn active" data-value="0">Still</button>
-                    <button class="step-btn" data-value="1">Gentle</button>
-                    <button class="step-btn" data-value="2">Moderate</button>
-                    <button class="step-btn" data-value="3">Active</button>
+                    <button class="step-btn active" data-value="0">Cool</button>
+                    <button class="step-btn" data-value="1">Warm</button>
+                    <button class="step-btn" data-value="2">Hot</button>
+                    <button class="step-btn" data-value="3">Blazing</button>
                 </div>
             </section>
 
-            <!-- Depth Control -->
+            <!-- Intensity Control -->
             <section class="control-section">
-                <label class="control-label">DEPTH</label>
+                <label class="control-label">INTENSITY</label>
                 <div class="step-control">
-                    <button class="step-btn active" data-value="0">Shallow</button>
+                    <button class="step-btn active" data-value="0">Low</button>
                     <button class="step-btn" data-value="1">Medium</button>
-                    <button class="step-btn" data-value="2">Deep</button>
+                    <button class="step-btn" data-value="2">High</button>
                 </div>
             </section>
 
-            <!-- Movement Control -->
+            <!-- Turbulence Control -->
             <section class="control-section">
-                <label class="control-label">MOVEMENT</label>
+                <label class="control-label">TURBULENCE</label>
                 <div class="step-control">
-                    <button class="step-btn active" data-value="0">Calm</button>
-                    <button class="step-btn" data-value="1">Flowing</button>
-                    <button class="step-btn" data-value="2">Dynamic</button>
+                    <button class="step-btn active" data-value="0">Steady</button>
+                    <button class="step-btn" data-value="1">Flickering</button>
+                    <button class="step-btn" data-value="2">Chaotic</button>
                 </div>
             </section>
 
@@ -84,53 +84,53 @@
             <section class="control-section">
                 <label class="control-label">COLOR HARMONY</label>
                 <div class="harmony-grid">
-                    <button class="harmony-btn active" data-harmony="ash">
+                    <button class="harmony-btn active" data-harmony="classic">
                         <div class="harmony-swatch">
-                            <span style="background: #E67E50"></span>
-                            <span style="background: #7D8F69"></span>
-                            <span style="background: #F5A962"></span>
+                            <span style="background: #FF4500"></span>
+                            <span style="background: #FF8C00"></span>
+                            <span style="background: #FFD700"></span>
                         </div>
-                        <span class="harmony-name">Ash Warmth</span>
+                        <span class="harmony-name">Classic Fire</span>
                     </button>
-                    <button class="harmony-btn" data-harmony="ocean">
+                    <button class="harmony-btn" data-harmony="infernal">
                         <div class="harmony-swatch">
-                            <span style="background: #4A90A4"></span>
-                            <span style="background: #5AB1BB"></span>
-                            <span style="background: #2D5F6D"></span>
+                            <span style="background: #8B0000"></span>
+                            <span style="background: #DC143C"></span>
+                            <span style="background: #FF4500"></span>
                         </div>
-                        <span class="harmony-name">Ocean Deep</span>
+                        <span class="harmony-name">Infernal</span>
                     </button>
-                    <button class="harmony-btn" data-harmony="forest">
+                    <button class="harmony-btn" data-harmony="lava">
                         <div class="harmony-swatch">
-                            <span style="background: #6B8F71"></span>
-                            <span style="background: #8FA888"></span>
-                            <span style="background: #4A6B52"></span>
+                            <span style="background: #FF6347"></span>
+                            <span style="background: #FF8C00"></span>
+                            <span style="background: #4A0000"></span>
                         </div>
-                        <span class="harmony-name">Forest Moss</span>
+                        <span class="harmony-name">Molten Lava</span>
                     </button>
-                    <button class="harmony-btn" data-harmony="sunset">
+                    <button class="harmony-btn" data-harmony="ember">
                         <div class="harmony-swatch">
-                            <span style="background: #E88D67"></span>
-                            <span style="background: #9B6B9E"></span>
-                            <span style="background: #F4A261"></span>
+                            <span style="background: #8B4513"></span>
+                            <span style="background: #D2691E"></span>
+                            <span style="background: #FF7F50"></span>
                         </div>
-                        <span class="harmony-name">Sunset Glow</span>
+                        <span class="harmony-name">Glowing Ember</span>
                     </button>
-                    <button class="harmony-btn" data-harmony="moonlight">
+                    <button class="harmony-btn" data-harmony="plasma">
                         <div class="harmony-swatch">
-                            <span style="background: #7B8FA3"></span>
-                            <span style="background: #A8B5C7"></span>
-                            <span style="background: #4E5D6C"></span>
+                            <span style="background: #FF1493"></span>
+                            <span style="background: #FF4500"></span>
+                            <span style="background: #FFD700"></span>
                         </div>
-                        <span class="harmony-name">Moonlight</span>
+                        <span class="harmony-name">Plasma</span>
                     </button>
-                    <button class="harmony-btn" data-harmony="earth">
+                    <button class="harmony-btn" data-harmony="solar">
                         <div class="harmony-swatch">
-                            <span style="background: #9B7E6F"></span>
-                            <span style="background: #6B8FA3"></span>
-                            <span style="background: #C4A57B"></span>
+                            <span style="background: #FFA500"></span>
+                            <span style="background: #FFFF00"></span>
+                            <span style="background: #FFFFFF"></span>
                         </div>
-                        <span class="harmony-name">Earth & Sky</span>
+                        <span class="harmony-name">Solar Flare</span>
                     </button>
                 </div>
             </section>
